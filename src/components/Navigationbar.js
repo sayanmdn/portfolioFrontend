@@ -1,28 +1,56 @@
-import React from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
 
+import { Navbar, Nav, NavItem } from "react-bootstrap";
 
 export function Navigationbar(props) {
-    
+  const history = useHistory();
+  const handleckick = (e) => {
+    history.push("/signup");
+  };
 
-    return (
-        <div>
-            <Navbar variant="dark" expand="lg" style={{background:"#112233", color: "white"}}>
-                <Navbar.Brand className="navbar-header"><Nav.Link href="#" style={{color:"#bbb", marginLeft:"100px"}}>Sayantan's Portfolio</Nav.Link></Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-nav-bar" style={{marginRight:"100px"}}>
-                    <Nav className="ml-auto">
-                        <Nav.Item ><Nav.Link href="/">Home</Nav.Link></Nav.Item>
-                        <Nav.Item ><Nav.Link href="/login">Login</Nav.Link></Nav.Item>
-                        <Nav.Item ><Nav.Link href="/signup">Signup</Nav.Link></Nav.Item>
-                        <Nav.Item ><Nav.Link href="/">About</Nav.Link></Nav.Item>
-                        <Nav.Item ><Nav.Link href="/">Contact</Nav.Link></Nav.Item>
+  return (
+    <Navbar
+      variant="dark"
+      expand="lg"
+      style={{ background: "#112233", color: "white" }}
+    >
+      <Navbar.Brand className="navbar-header">
+        <Link to="/" style={{ color: "#bbb", marginLeft: "100px" }} component={Nav.Link}>
+          Sayantan's Portfolio
+        </Link>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-nav-bar" style={{ marginRight: "100px" }}>
+        <Nav className="ml-auto">
+          <NavItem>
+            <Link to="/" component={Nav.Link}>
+              Home
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/login" component={Nav.Link}>
+              Login
+            </Link>
+          </NavItem>
 
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-
-        </div>
-    )
+          <NavItem>
+            <Link to="/signup" component={Nav.Link}>
+              Signup
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/warehouse" component={Nav.Link}>
+              Warehouse
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/contact" component={Nav.Link}>
+              Contact
+            </Link>
+          </NavItem>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 }

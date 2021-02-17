@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Loginform } from "./forms/LoginForm";
 import axios from 'axios'
-import { addCount } from "../redux/actions";
-import {useDispatch} from "react-redux"
 
-// import isAlreadyLoggedIn from "./isAlreadyLoggedIn";
-// const logger = isAlreadyLoggedIn()
+export function Warehouse(props) {
+var [isValidToken, setIsValidToken] = useState(null)
 
-
-export function Login(props) {
-const [isValidToken, setIsValidToken] = useState(null)
-const dispatch = useDispatch()
 // console.log("Token is "+authToken)
 useEffect(()=>{
     const authToken = localStorage.getItem('token')
@@ -18,8 +12,7 @@ useEffect(()=>{
     .then (res =>{
         console.log(res)
         if(res.data.code === "tokenValid"){
-            console.log("res.data out: "+ JSON.stringify(res.data.message))
-            // dispatch(addCount())
+            console.log("res.data.code out: "+res.data.code)
             setIsValidToken(res.data) 
         }
     })

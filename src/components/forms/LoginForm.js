@@ -19,26 +19,30 @@ export function Loginform(props) {
           axios.post(`http://localhost:8000/user/login`, values)
           .then(res => {
               // SUCCESS
+              console.log("res: "+ res)
               if(res.data.code === "Loggedin"){
                   localStorage.setItem("token", res.data.message)
                   setLoginSuccess(true)
                 //   alert("login success")
               }
-              // FAILED
-              if(res.data === "Not valid password" || res.data === "Email do not exists"){
-                  setAuthFailed(true)
-                }
-            //VALIDATION ERROR
-            if(res.data.code === "validationFalse"){
-                // setValidationError(res.data.message)
-                setValidationError(true)
-            }
+              console.log(res);
+              // console.log(res.data);
+            })
+            .catch(error =>{
+                console.log("Error log: "+error)
+                //   console.log("Error log: "+ JSON.stringify(error.response))
+                // console.log("Error log: "+ error.response.data.code)
                 
-            console.log(res);
-            // console.log(res.data);
-          })
-          .catch(error =>{
-              console.log(error)
+                //VALIDATION ERROR
+                if(error.response.data.code === "validationFalse"){
+                    // setValidationError(res.data.message)
+                    setValidationError(true)
+                }
+                // FAILED
+                if(error.response.data === "Not valid password" || error.response.data === "Email do not exists"){
+                    setAuthFailed(true)
+                  }
+                  
           })
           // alert(JSON.stringify(values));
         },
