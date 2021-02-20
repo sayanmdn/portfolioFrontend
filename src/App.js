@@ -6,19 +6,18 @@ import { Signup } from "./components/Signup";
 import { Warehouse } from "./components/Warehouse";
 import { Cake } from "./components/CakeContainer";
 
-import { Provider, useSelector, useDispatch  } from "react-redux";
+import { Provider } from "react-redux";
 
 import store from "./redux/store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { initAuth } from "./redux/actions";
-import { useEffect } from "react";
+
 
 function App() {
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    store.dispatch(initAuth());
-  }, [])
+  //   store.dispatch(initAuth());
+  // }, [])
 
   return (
     <Provider store={store}>
