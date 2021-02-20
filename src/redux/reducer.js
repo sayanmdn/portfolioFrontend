@@ -1,4 +1,4 @@
-import { BUY_CAKE, SET_AUTH_USER } from "./actionTypes";
+import { BUY_CAKE, SET_AUTH_USER, REMOVE_AUTH_USER } from "./actionTypes";
 
 const initialState = {
   numOfCakes: 10,
@@ -32,8 +32,13 @@ export const authReducer = (state = initialAuth, action) => {
       };
     case SET_AUTH_USER:
       return {
-        ...state,
-        ...payload,
+        user: payload,
+        isLoggedIn: true
+      };
+    case REMOVE_AUTH_USER:
+      return{
+        isLoggedIn:false,
+        user: null
       };
     default:
       return state;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Loginform } from "./forms/LoginForm";
 import axios from 'axios'
-import { addCount } from "../redux/actions";
+import { delAuth, initAuth } from "../redux/actions";
 import {useDispatch} from "react-redux"
 
 // import isAlreadyLoggedIn from "./isAlreadyLoggedIn";
@@ -18,15 +18,20 @@ useEffect(()=>{
     .then (res =>{
         console.log(res)
         if(res.data.code === "tokenValid"){
-            console.log("res.data out: "+ JSON.stringify(res.data.message))
+            console.log("res.data message: "+ JSON.stringify(res.data.message))
             // dispatch(addCount())
+            dispatch(initAuth(res.data.message))
             setIsValidToken(res.data) 
         }
+    })
+    .catch (err =>{
+        console.log("Error from isValidAuthToken "+err)
     })
 },[])
 const removeToken = () =>{
     localStorage.setItem('token', null)
     setIsValidToken(null)
+    dispatch(delAuth())
 }
 
 console.log("Valid token out: "+isValidToken)

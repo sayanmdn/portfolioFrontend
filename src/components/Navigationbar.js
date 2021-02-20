@@ -1,13 +1,19 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import {useSelector, useDispatch} from 'react-redux'
+import {delAuth} from '../redux/actions'
 
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 
 export function Navigationbar(props) {
-  const history = useHistory();
-  const handleckick = (e) => {
-    history.push("/signup");
-  };
+  
+  const auth = useSelector(state => state.auth)
+  const dispatch = useDispatch() 
+
+  const handleLogout = () =>{
+    localStorage.setItem('token', null)
+    dispatch(delAuth())
+  }
 
   return (
     <Navbar
@@ -28,22 +34,36 @@ export function Navigationbar(props) {
               Home
             </Link>
           </NavItem>
-          <NavItem>
-            <Link to="/login" component={Nav.Link}>
-              Login
-            </Link>
-          </NavItem>
-
+            {
+              !auth.isLoggedIn &&
           <NavItem>
             <Link to="/signup" component={Nav.Link}>
               Signup
             </Link>
           </NavItem>
+}
+{         !auth.isLoggedIn &&
+          <NavItem>
+              <Link to="/login" component={Nav.Link}>
+              Login
+              </Link>
+          </NavItem>
+}
+{
+          auth.isLoggedIn &&
           <NavItem>
             <Link to="/warehouse" component={Nav.Link}>
               Warehouse
             </Link>
           </NavItem>
+}
+{          auth.isLoggedIn &&
+          <NavItem>
+            <Link onClick={()=>handleLogout()} component={Nav.Link}>
+              Logout
+            </Link>
+          </NavItem>
+}
           <NavItem>
             <Link to="/contact" component={Nav.Link}>
               Contact
