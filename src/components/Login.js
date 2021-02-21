@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux"
 
 export function Login(props) {
 const [isValidToken, setIsValidToken] = useState(null)
-// const dispatch = useDispatch()
+const dispatch = useDispatch()
 // // console.log("Token is "+authToken)
 // useEffect(()=>{
 //     const authToken = localStorage.getItem('token')
