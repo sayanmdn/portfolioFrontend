@@ -1,10 +1,15 @@
 import "./App.css";
+import {useEffect} from 'react'
 import { Navigationbar } from "./components/Navigationbar";
 import { Login } from "./components/Login";
 import { Area1 } from "./components/Area1";
 import { Signup } from "./components/Signup";
 import { Warehouse } from "./components/Warehouse";
 import { Cake } from "./components/CakeContainer";
+import axios from 'axios'
+import {useDispatch} from "react-redux"
+
+import { delAuth, initAuth } from "./redux/actions";
 
 import { Provider } from "react-redux";
 
@@ -14,10 +19,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
 
-  // useEffect(() => {
-    
-  //   store.dispatch(initAuth());
-  // }, [])
 
   return (
     <Provider store={store}>

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useFormik } from 'formik';
 import axios from "axios";
+import {URL} from '../../config'
+
 
 export function SignupForm(props) {
     var [emailAlreadyExists, setemailAlreadyExists] = useState(false)
@@ -17,7 +19,7 @@ export function SignupForm(props) {
                 password:''
           },
           onSubmit: values => {
-            axios.post(`http://localhost:8000/user/signup`, values)
+            axios.post(`${URL}user/signup`, values)
             .then(res => {
                 if(res.data === "Email already exists"){
                     setemailAlreadyExists(true)

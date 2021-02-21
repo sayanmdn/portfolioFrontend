@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { useFormik } from 'formik';
+import { useHistory } from "react-router-dom";
+import {useSelector, useDispatch} from 'react-redux'
+import {initAuth} from '../../redux/actions'
+import {URL} from '../../config'
+
+
 
 
 export function Loginform(props) {
@@ -9,6 +15,9 @@ export function Loginform(props) {
     var [authFailed, setAuthFailed] = useState(false)
     var [validationError, setValidationError] = useState(null)
     // var [loggedIn, setLoggedIn] = useState(false)
+    let history = useHistory();
+  let dispatch = useDispatch()
+
     
     const formik = useFormik({
         initialValues: {
@@ -16,7 +25,7 @@ export function Loginform(props) {
               password:''
         },
         onSubmit: values => {
-          axios.post(`http://localhost:8000/user/login`, values)
+          axios.post(`${URL}user/login`, values)
           .then(res => {
               // SUCCESS
               console.log("res: "+ res)
@@ -24,6 +33,8 @@ export function Loginform(props) {
                   localStorage.setItem("token", res.data.message)
                   setLoginSuccess(true)
                 //   alert("login success")
+              dispatch(initAuth(res.data.message))
+                history.push("/warehouse");
               }
               console.log(res);
               // console.log(res.data);

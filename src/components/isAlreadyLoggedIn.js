@@ -1,11 +1,13 @@
 import axios from 'axios'
+import {URL} from '../config'
+
 
 
 async function isAlreadyLoggedIn() {
     // return true
     const values = localStorage.getItem('token')
     console.log("Token is "+values)
-    await axios.post(`http://localhost:8000/post/isAuthenticated`, {"token": values})
+    await axios.post(`${URL}post/isAuthenticated`, {"token": values})
     .then (res =>{
         console.log(res)
         if(res.data.code === "tokenValid"){

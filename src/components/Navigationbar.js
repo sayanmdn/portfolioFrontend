@@ -1,18 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Link, useHistory } from "react-router-dom";
 import {useSelector, useDispatch} from 'react-redux'
-import {delAuth} from '../redux/actions'
+import {delAuth, initAuth} from '../redux/actions'
+import axios from 'axios'
+import {URL} from '../config'
 
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 
 export function Navigationbar(props) {
+  let history = useHistory();
+
+  const dispatch = useDispatch()
+  // console.log("Token is "+authToken)
+  useEffect(()=>{
+      const authToken = localStorage.getItem('token')
+      axios.post(`${URL}post/isAuthenticated`, {"token": authToken})
+      .then (res =>{
+          console.log(res)
+          if(res.data.code === "tokenValid"){
+              console.log("res.data message: "+ JSON.stringify(res.data.message))
+              // dispatch(addCount())
+              dispatch(initAuth(res.data.message))
+          }
+      })
+      .catch (err =>{
+          console.log("Error from isValidAuthToken "+err)
+      })
+  },[dispatch])
   
   const auth = useSelector(state => state.auth)
-  const dispatch = useDispatch() 
 
   const handleLogout = () =>{
     localStorage.setItem('token', null)
     dispatch(delAuth())
+    history.push("/login");
   }
 
   return (
@@ -30,44 +51,44 @@ export function Navigationbar(props) {
       <Navbar.Collapse id="basic-nav-bar" style={{ marginRight: "100px" }}>
         <Nav className="ml-auto">
           <NavItem>
-            <Link to="/" component={Nav.Link}>
+            <Nav.Link to="/" as={Link}>
               Home
-            </Link>
+            </Nav.Link>
           </NavItem>
             {
               !auth.isLoggedIn &&
           <NavItem>
-            <Link to="/signup" component={Nav.Link}>
+            <Nav.Link to="/signup" as={Link}>
               Signup
-            </Link>
+            </Nav.Link>
           </NavItem>
 }
 {         !auth.isLoggedIn &&
           <NavItem>
-              <Link to="/login" component={Nav.Link}>
+              <Nav.Link to="/login" as={Link}>
               Login
-              </Link>
+              </Nav.Link>
           </NavItem>
 }
 {
           auth.isLoggedIn &&
           <NavItem>
-            <Link to="/warehouse" component={Nav.Link}>
+            <Nav.Link to="/warehouse" as={Link}>
               Warehouse
-            </Link>
+            </Nav.Link>
           </NavItem>
 }
 {          auth.isLoggedIn &&
           <NavItem>
-            <Link onClick={()=>handleLogout()} component={Nav.Link}>
+            <Nav.Link onClick={()=>handleLogout()} as={Link}>
               Logout
-            </Link>
+            </Nav.Link>
           </NavItem>
 }
           <NavItem>
-            <Link to="/contact" component={Nav.Link}>
+            <Nav.Link to="/contact" as={Link}>
               Contact
-            </Link>
+            </Nav.Link>
           </NavItem>
         </Nav>
       </Navbar.Collapse>
