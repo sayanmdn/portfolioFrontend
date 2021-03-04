@@ -34,7 +34,7 @@ export function Loginform(props) {
                   setLoginSuccess(true)
                 //   alert("login success")
               dispatch(initAuth(res.data.message))
-                history.push("/warehouse");
+                history.push("/");
               }
               console.log(res);
               // console.log(res.data);
