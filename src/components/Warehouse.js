@@ -1,12 +1,56 @@
-import React from 'react'
+import React, {useEffect, useState} from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import axios from 'axios'
+import { Form, Button } from 'react-bootstrap'
+import { useFormik } from 'formik';
+import {URL} from '../config'
+
 
 export function Warehouse(props) {
+    const auth = useSelector(state => state.auth)
+    if(auth.isLoggedIn){
+        var userId = auth.user.id
+    }
+
+    var [saveSuccess, setSaveSuccess] = useState(false)
+    const formik = useFormik({
+        initialValues: {
+              data: '',
+        },
+        onSubmit: values => {
+          axios.post(`${URL}user/save`, {userId: userId, data: values})
+          .then(res => {
+
+              //USERCREATED SUCCESS
+              if(res.data.code === "dataSaved"){
+                  setSaveSuccess(true)
+                  alert("Data saved successfully")
+              }
+
+              console.log(res);
+              // console.log(res.data);
+          })
+          .catch(error =>{
+              console.log(error)
+          })
+          // alert(JSON.stringify(values));
+        },
+      });
     
 
     return (
-        <>
-            <h2>To be constructed</h2>
-        </>
+        <div className="dataForm">
+            <h2>HTTP Logger</h2>
+            <Form className="data-form" onSubmit={formik.handleSubmit}>
+            <Form.Group controlId="formBasicName">
+                <Form.Label>Anything you want to save</Form.Label>
+                <Form.Control type="text" name="data" placeholder="Enter data" onChange={formik.handleChange} value={formik.values.data}/>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+                Submit Data
+            </Button>
+            </Form>
+        </div>
     )
 }
 

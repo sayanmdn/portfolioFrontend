@@ -36,8 +36,8 @@ export function Loginform(props) {
               dispatch(initAuth(res.data.message))
                 history.push("/");
               }
-              console.log(res);
-              // console.log(res.data);
+              console.log("Flag20 : "+res);
+              console.log("Flag21 : "+res.data);
             })
             .catch(error =>{
                 console.log("Error log: "+error)

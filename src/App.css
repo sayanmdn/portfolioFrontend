@@ -12,3 +12,9 @@
 .text-muted{
     color: red !important; 
 }
+.dataForm{
+    width: 30%;
+    padding-top: 20%;
+    margin-left: 37%;
+
+}
