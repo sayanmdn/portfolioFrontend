@@ -16,7 +16,7 @@ export function Loginform(props) {
     var [validationError, setValidationError] = useState(null)
     // var [loggedIn, setLoggedIn] = useState(false)
     let history = useHistory();
-  let dispatch = useDispatch()
+    let dispatch = useDispatch()
 
     
     const formik = useFormik({
