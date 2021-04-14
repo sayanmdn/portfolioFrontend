@@ -14,7 +14,6 @@ export function Loginform(props) {
     var [loginSuccess, setLoginSuccess] = useState(false)
     var [authFailed, setAuthFailed] = useState(false)
     var [validationError, setValidationError] = useState(null)
-    // var [loggedIn, setLoggedIn] = useState(false)
     let history = useHistory();
     let dispatch = useDispatch()
 
@@ -28,16 +27,13 @@ export function Loginform(props) {
           axios.post(`${URL}user/login`, values)
           .then(res => {
               // SUCCESS
-              console.log("res: "+ res)
+              console.log("res: "+ JSON.stringify(res))
               if(res.data.code === "Loggedin"){
-                  localStorage.setItem("token", res.data.message)
+                  localStorage.setItem("token", res.data.token)
                   setLoginSuccess(true)
-                //   alert("login success")
-              dispatch(initAuth(res.data.message))
+                dispatch(initAuth(res.data.user))
                 history.push("/");
               }
-              console.log("Flag20 : "+res);
-              console.log("Flag21 : "+res.data);
             })
             .catch(error =>{
                 console.log("Error log: "+error)
