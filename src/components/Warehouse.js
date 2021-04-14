@@ -7,12 +7,25 @@ import {URL} from '../config'
 
 
 export function Warehouse(props) {
+  const [testData, setTestData] = useState([])
+   const fetchData = () => {
+      const authToken = localStorage.getItem('token')
+      axios.post(URL+"user/getdata", {"token": authToken})
+      .then(res=>{
+        // console.log("fetchData response: "+ JSON.stringify(res))
+        setTestData(res.data)
+      })
+      .catch(err=>{
+        console.log("error returned at fetchData: "+ err)
+      })
+    }
     const auth = useSelector(state => state.auth)
     if(auth.isLoggedIn){
         var userId = auth.user.id
     }
 
     var [saveSuccess, setSaveSuccess] = useState(false)
+    const [savedData, setSavedData] = useState(testData)
     const formik = useFormik({
         initialValues: {
               data: '',
@@ -31,15 +44,17 @@ export function Warehouse(props) {
               // console.log(res.data);
           })
           .catch(error =>{
-              console.log(error)
+              console.error(error)
           })
           // alert(JSON.stringify(values));
         },
       });
+
     
 
     return (
         <div className="dataForm">
+          <div className="dataFormUpper">
             <h2>HTTP Logger</h2>
             <Form className="data-form" onSubmit={formik.handleSubmit}>
             <Form.Group controlId="formBasicName">
@@ -50,61 +65,19 @@ export function Warehouse(props) {
                 Submit Data
             </Button>
             </Form>
+          </div>
+          <div className="dataFormUpper" style={{marginTop:"200px"}}>
+          <h2>Your saved data</h2>
+          <Button style={{marginBottom:"30px"}} onClick={()=>fetchData()} >Fetch Data</Button>
+          <ol>
+          {
+          testData.map(data => {
+            return (<li>{JSON.stringify(data.data.data)}</li>)
+          })
+          }
+          </ol>
+          </div>
         </div>
     )
 }
-
-
-// import React, { useState, useEffect } from 'react'
-// import { Loginform } from "./forms/LoginForm";
-// import axios from 'axios'
-// import {URL} from '../config'
-// import { useSelector, useDispatch } from "react-redux";
-
-
-// export function Warehouse(props) {
-// var [isValidToken, setIsValidToken] = useState(null)
-// const auth = useSelector(state => state.auth)
-
-
-// // console.log("Token is "+authToken)
-// useEffect(()=>{
-//     console.log("Useeffect using:221  "+ auth.user)
-//     if(!auth.isLoggedIn){
-//         const authToken = localStorage.getItem('token')
-//         axios.post(`${URL}post/isAuthenticated`, {"token": authToken})
-//         .then (res =>{
-//             console.log(res)
-//             if(res.data.code === "tokenValid"){
-//                 console.log("res.data.code out: "+res.data.code)
-//             }
-//             setIsValidToken(res.data) 
-//         })
-//         setIsValidToken(true)
-//     }
-// },[auth])
-// const removeToken = () =>{
-//     localStorage.setItem('token', null)
-//     setIsValidToken(null)
-// }
-
-// console.log("Valid token out: "+isValidToken)
-
-//     if(!isValidToken) {return (
-//         <div style={{background:"linear-gradient(#112233, #002222)", color:"white", textAlign:"center", height:"93vh"}}>
-//             <div style={{paddingTop:"10vh"}}></div>
-//                 <Loginform/>
-//         </div>
-//     )} else {
-//         return(
-//             <div style={{background:"linear-gradient(#112233, #002222)", color:"white", textAlign:"center", height:"93vh"}}>
-//             <div style={{paddingTop:"10vh"}}></div>
-//                 <h2>Hi, </h2>
-//                 <h2>You are already loggedin</h2>
-//                 <button onClick={removeToken}>Logout</button>
-//         </div>
-//         )
-//     }
-// }
-
 
