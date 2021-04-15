@@ -44,7 +44,7 @@ export function Navigationbar(props) {
     >
       <Navbar.Brand className="navbar-header">
         <Link to="/" style={{ color: "#bbb", marginLeft: "100px" }} component={Nav.Link}>
-          Sayantan's Portfolio
+          Sayantan's Webapps
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
