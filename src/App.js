@@ -18,7 +18,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
 function App() {
-
+  useEffect(() => {
+    document.title = "Sayantan Mishra | Software Developer"
+ }, []);
 
   return (
     <Provider store={store}>
