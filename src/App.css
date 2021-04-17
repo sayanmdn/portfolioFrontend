@@ -40,3 +40,14 @@
     opacity: 1;
   }
 }
+.home-projects{
+    margin-top: 200px;
+    text-align: left;
+    margin-left: 20%;
+}
+.data-api{
+    text-align: left;
+}
+.dataFormUpper{
+    background-color: black;
+}

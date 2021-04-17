@@ -8,7 +8,13 @@ import {URL} from '../config'
 
 export function Warehouse(props) {
   const [testData, setTestData] = useState([])
-  const [stateToken, setStateToken] = useState([])
+  const [stateToken, setStateToken] = useState("")
+
+  useEffect (()=>{
+    const authToken = localStorage.getItem('token')
+      setStateToken(authToken)
+  }, [])
+
    const fetchData = () => {
       const authToken = localStorage.getItem('token')
       setStateToken(authToken)
@@ -55,8 +61,8 @@ export function Warehouse(props) {
     
 
     return (
-        <div className="dataForm">
-          <div className="dataFormUpper">
+        <div className="warehouse-main">
+          <div className="dataForm">
             <h2>HTTP Logger</h2>
             <Form className="data-form" onSubmit={formik.handleSubmit}>
             <Form.Group controlId="formBasicName">
@@ -68,7 +74,17 @@ export function Warehouse(props) {
             </Button>
             </Form>
           </div>
-          <div className="dataFormUpper" style={{marginTop:"200px"}}>
+            <div className="data-api">
+              <p>You can also log your data from your application. Api details are given below</p>
+              <code>Link: https://api.sayantanmishra.com/user/save</code><br/>
+              <code>Request method: POST, Object:{`{"token":"` +stateToken+ `"
+                "data": {
+                  "your data": "your data",
+                  "your data": "your data"
+                }
+            }`}</code>
+            </div>
+          <div className="dataFormUpper" style={{marginTop:"150px"}}>
           <h2>Your saved data</h2>
           <Button style={{marginBottom:"30px"}} onClick={()=>fetchData()} >Fetch Data</Button>
           <ol>
