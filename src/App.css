@@ -16,5 +16,27 @@
     width: 30%;
     padding-top: 10%;
     margin: auto;
+}
+.home-social-links{
+    position: relative;
+    margin-top: 30px;
+    animation: 4s fadeIn;
+  animation-fill-mode: forwards;
+  
+  /* visibility: hidden; */
+  opacity: 0;
+}
 
+/* .home-social-links:hover {
+  background-color: #123;
+} */
+
+@keyframes fadeIn {
+  80% {
+    opacity: 0;
+  }
+  100% {
+    /* visibility: visible; */
+    opacity: 1;
+  }
 }

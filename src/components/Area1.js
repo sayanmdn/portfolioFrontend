@@ -29,7 +29,7 @@ export function Area1(props) {
                 <Writer2 />
             }
         </div>
-        <div style={{marginTop:"30px"}}>
+        <div className="home-social-links">
             <a href="https://github.com/sayanmdn">
                 <img src={gitLogo} width="40px"/>
             </a>
