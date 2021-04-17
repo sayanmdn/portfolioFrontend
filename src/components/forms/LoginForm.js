@@ -32,7 +32,7 @@ export function Loginform(props) {
                   localStorage.setItem("token", res.data.token)
                   setLoginSuccess(true)
                 dispatch(initAuth(res.data.user))
-                history.push("/");
+                history.push("/warehouse");
               }
             })
             .catch(error =>{

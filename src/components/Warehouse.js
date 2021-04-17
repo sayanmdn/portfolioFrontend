@@ -8,8 +8,10 @@ import {URL} from '../config'
 
 export function Warehouse(props) {
   const [testData, setTestData] = useState([])
+  const [stateToken, setStateToken] = useState([])
    const fetchData = () => {
       const authToken = localStorage.getItem('token')
+      setStateToken(authToken)
       axios.post(URL+"user/getdata", {"token": authToken})
       .then(res=>{
         // console.log("fetchData response: "+ JSON.stringify(res))
@@ -31,7 +33,7 @@ export function Warehouse(props) {
               data: '',
         },
         onSubmit: values => {
-          axios.post(`${URL}user/save`, {userId: userId, data: values})
+          axios.post(`${URL}user/save`, {token: stateToken, data: values})
           .then(res => {
 
               //USERCREATED SUCCESS
