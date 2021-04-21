@@ -13,7 +13,8 @@ export function Area1(props) {
     }
     
     return (
-    <div>
+    <div className="body-backgroud">
+        <div className="home-upper">
         <div className="Area1">
             <div>
             <Typewriter
@@ -36,6 +37,7 @@ export function Area1(props) {
             <a href="https://www.linkedin.com/in/sayanmdn/">
                 <img src={linkedinLogo} width="40px" style={{marginLeft:"30px"}}/>
             </a>
+        </div>
         </div>
         <div className="home-projects">
             <h2>Projects :</h2>

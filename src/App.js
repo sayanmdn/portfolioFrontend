@@ -27,9 +27,7 @@ function App() {
       <Router>
         <Navigationbar />
         <Switch>
-          <div className="main-class"
-            
-          >
+          <div className="main-class">
             <Route exact path="/">
               <Area1 />
             </Route>

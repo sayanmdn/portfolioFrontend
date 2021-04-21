@@ -38,7 +38,7 @@
   }
 }
 .home-projects{
-    margin-top: 200px;
+    margin-top: 20vh;
     text-align: left;
     margin-left: 20%;
 }
@@ -52,7 +52,7 @@
   background: linear-gradient(#112233, #002222);
   color: white;
   text-align: center;
-  height: 93vh
+  height: 92.7vh
 }
 
 @media screen and (min-width: 480px) {
@@ -61,10 +61,22 @@
     width: 300px;
 }
 }
-
 .navbar{
   text-align: right;
 }
 .navbar-collapse{
   margin-right: 1rem;
+}
+.home-upper{
+  height: 40vh;
+}
+@media screen and (max-height: 680px) {
+  .home-projects{
+    margin-top: 40vh;
+    text-align: left;
+    margin-left: 20%;
+}
+.main-class{
+  height: auto;
+}
 }
