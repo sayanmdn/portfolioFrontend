@@ -27,13 +27,8 @@ function App() {
       <Router>
         <Navigationbar />
         <Switch>
-          <main
-            style={{
-              background: "linear-gradient(#112233, #002222)",
-              color: "white",
-              textAlign: "center",
-              height: "93vh",
-            }}
+          <div className="main-class"
+            
           >
             <Route exact path="/">
               <Area1 />
@@ -50,7 +45,7 @@ function App() {
             <Route exact path="/cake">
               <Cake />
             </Route>
-          </main>
+          </div>
         </Switch>
       </Router>
     </Provider>

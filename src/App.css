@@ -5,10 +5,7 @@
 .Area1{
     padding-top: 20vh;
 }
-.login-form{
-    margin-left: 42%;
-    width: 300px;
-}
+
 .text-muted{
     color: red !important; 
 }
@@ -50,4 +47,24 @@
 }
 .dataFormUpper{
     background-color: black;
+}
+.main-class{
+  background: linear-gradient(#112233, #002222);
+  color: white;
+  text-align: center;
+  height: 93vh
+}
+
+@media screen and (min-width: 480px) {
+  .login-form{
+    margin: auto;
+    width: 300px;
+}
+}
+
+.navbar{
+  text-align: right;
+}
+.navbar-collapse{
+  margin-right: 1rem;
 }
