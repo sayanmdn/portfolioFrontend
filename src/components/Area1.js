@@ -43,10 +43,10 @@ export function Area1(props) {
             <h2>Projects :</h2>
             <ul>
                 <li>Http Logger :</li>
-                <p>Description to be written // Signup and login to use it</p>
-                <br/>
+                <p>Please signup with your email id in th top right bar and login to use it</p>
+                {/* <br/>
                 <li>Chat App :</li>
-                <p>Same</p>
+                <p>Currently under deve</p> */}
             </ul>
         </div>
     </div>
