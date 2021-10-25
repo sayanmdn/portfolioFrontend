@@ -18,7 +18,7 @@ export function Warehouse(props) {
    const fetchData = () => {
       const authToken = localStorage.getItem('token')
       setStateToken(authToken)
-      axios.post(URL+"user/getdata", {"token": authToken})
+      axios({method: 'post', url: URL+"user/getdata", data: {"token": authToken}})
       .then(res=>{
         // console.log("fetchData response: "+ JSON.stringify(res))
         setTestData(res.data)
@@ -79,8 +79,7 @@ export function Warehouse(props) {
               <code>Link: https://api.sayantanmishra.com/user/save</code><br/>
               <code>Request method: POST, Object:{`{"token":"` +stateToken+ `"
                 "data": {
-                  "your data": "your data",
-                  "your data": "your data"
+                  <YOUR JSON DATA>
                 }
             }`}</code>
             </div>
