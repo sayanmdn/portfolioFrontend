@@ -14,7 +14,7 @@ export function Navigationbar(props) {
   // console.log("Token is "+authToken)
   useEffect(()=>{
       const authToken = localStorage.getItem('token')
-      axios.post(`${URL}post/isAuthenticated`, {"token": authToken})
+      axios.post(`${URL}post/isAuthenticated`, {"token": "not needed here"},{headers:{'Authorization': 'Bearer' + authToken}})
       .then (res =>{
           console.log(res)
           if(res.data.code === "tokenValid"){
