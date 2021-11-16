@@ -59,7 +59,7 @@ export function Writer2(props) {
     return (
         <div>
             <Typewriter
-                string='Trainee Software Developer @Mantra Labs'
+                string='Software Developer @Onmo'
                 delay={30}
                 stopBlinkinOnComplete
             />
