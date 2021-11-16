@@ -6,10 +6,10 @@ import { Area1 } from "./components/Area1";
 import { Signup } from "./components/Signup";
 import { Warehouse } from "./components/Warehouse";
 import { Cake } from "./components/CakeContainer";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+// import axios from "axios";
+// import { useDispatch } from "react-redux";
 import reactGa from "react-ga";
-import { delAuth, initAuth } from "./redux/actions";
+// import { delAuth, initAuth } from "./redux/actions";
 
 import { Provider } from "react-redux";
 
