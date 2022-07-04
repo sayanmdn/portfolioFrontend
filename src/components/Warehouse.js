@@ -108,9 +108,12 @@ export function Warehouse(props) {
           Fetch Data
         </Button>
         <ol>
-          {testData.map((data) => {
-            return <li>{JSON.stringify(data.data.data)}</li>;
-          })}
+          {testData
+            .slice(0)
+            .reverse()
+            .map((data) => {
+              return <li>{JSON.stringify(data.data.data)}</li>;
+            })}
         </ol>
       </div>
     </div>
