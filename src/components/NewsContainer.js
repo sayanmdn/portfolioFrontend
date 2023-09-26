@@ -6,6 +6,7 @@ import { URL } from "../config";
 export function NewsComponent(props) {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [maintenance, setMaintenance] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +17,7 @@ export function NewsComponent(props) {
         setNews(newsPoints);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setMaintenance(true);
       } finally {
         setLoading(false);
       }
@@ -29,6 +31,7 @@ export function NewsComponent(props) {
       <div></div>
       <div>
         <h2>News</h2>
+        {maintenance && <h3>System under maintenance</h3>}
         {loading ? (
           <div>
             <Spinner animation="border" role="status">
