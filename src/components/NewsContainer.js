@@ -31,7 +31,7 @@ export function NewsComponent(props) {
       <div></div>
       <div>
         <h2>News</h2>
-        {maintenance && <h3>System under maintenance</h3>}
+        {maintenance && <h3>Please retry after a short wait.</h3>}
         {loading ? (
           <div>
             <Spinner animation="border" role="status">

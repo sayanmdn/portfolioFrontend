@@ -7,6 +7,7 @@ import { Signup } from "./components/Signup";
 import { Warehouse } from "./components/Warehouse";
 import { Cake } from "./components/CakeContainer";
 import { NewsComponent } from "./components/NewsContainer";
+import { WriteComponent } from "./components/WriteComponent";
 import reactGa from "react-ga";
 
 import { Provider } from "react-redux";
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route exact path="/news">
               <NewsComponent />
+            </Route>
+            <Route exact path="/write">
+              <WriteComponent />
             </Route>
           </div>
         </Switch>

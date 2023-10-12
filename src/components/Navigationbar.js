@@ -83,6 +83,13 @@ export function Navigationbar(props) {
           )}
           {auth.isLoggedIn && (
             <NavItem>
+              <Nav.Link to="/write" as={Link}>
+                Rewrite
+              </Nav.Link>
+            </NavItem>
+          )}
+          {auth.isLoggedIn && (
+            <NavItem>
               <Nav.Link to="/warehouse" as={Link}>
                 Warehouse
               </Nav.Link>
