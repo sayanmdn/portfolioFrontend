@@ -11,20 +11,18 @@ export function Navigationbar(props) {
   let history = useHistory();
 
   const dispatch = useDispatch();
-  // console.log("Token is "+authToken)
   useEffect(() => {
     const authToken = localStorage.getItem("token");
     axios
       .post(
         `${URL}post/isAuthenticated`,
         { token: "not needed here" },
-        { headers: { Authorization: "Bearer" + authToken } }
+        { headers: { Authorization: authToken } }
       )
       .then((res) => {
         console.log(res);
         if (res.data.code === "tokenValid") {
           console.log("res.data message: " + JSON.stringify(res.data.message));
-          // dispatch(addCount())
           dispatch(initAuth(res.data.message));
         }
       })

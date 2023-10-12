@@ -26,7 +26,6 @@ export function Warehouse(props) {
       data: { token: authToken },
     })
       .then((res) => {
-        // console.log("fetchData response: "+ JSON.stringify(res))
         setTestData(res.data);
       })
       .catch((err) => {
@@ -89,7 +88,7 @@ export function Warehouse(props) {
           You can also log your data from your application. Api details are
           given below
         </p>
-        <code>Link: https://api.sayantanmishra.com/user/save</code>
+        <code>Link: {URL}user/save</code>
         <br />
         <code>
           Request method: POST, Object:
