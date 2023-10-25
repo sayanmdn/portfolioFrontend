@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ListGroup, Spinner } from "react-bootstrap";
 import { URL } from "../config";
+import CustomProgressBar from "./card/progress";
 
 export function NewsComponent(props) {
   const [news, setNews] = useState([]);
@@ -37,7 +38,13 @@ export function NewsComponent(props) {
             <Spinner animation="border" role="status">
               <span className="sr-only">Loading...</span>
             </Spinner>
-            <p>(Content curation typically requires around 7 seconds.)</p>
+            <p>
+              (Content curation usually takes approximately 10 seconds if not
+              cached. I appreciate your patience.)
+            </p>
+            <div className="progress">
+              <CustomProgressBar />
+            </div>
           </div>
         ) : (
           <ListGroup
