@@ -52,4 +52,5 @@ function App() {
   );
 }
 
+// The App component is the root component of the application. It is the parent component of all other components. It is the component that is rendered by the ReactDOM.render() method in the index.js file. The App component is a functional component that returns a JSX element. The App component is responsible for rendering the Navigationbar component and the other components based on the route.
 export default App;
