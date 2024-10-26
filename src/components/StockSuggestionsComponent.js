@@ -41,17 +41,17 @@ export function SocksSuggestions() {
         <Table striped bordered hover responsive>
           <thead>
             <tr>
-              <th>Trading Symbol</th>
-              <th>Delta 200</th>
-              <th>Delta 50</th>
+              <th style={{ color: "white" }}>Trading Symbol</th>
+              <th style={{ color: "white" }}>Delta 200</th>
+              <th style={{ color: "white" }}>Delta 50</th>
             </tr>
           </thead>
           <tbody>
             {stocks.map((stock) => (
               <tr key={stock._id}>
-                <td>{stock.trading_symbol}</td>
-                <td>{stock.delta200.toFixed(2)}%</td>
-                <td>{stock.delta50.toFixed(2)}%</td>
+                <td style={{ color: "white" }}>{stock.trading_symbol}</td>
+                <td style={{ color: "white" }}>{stock.delta200.toFixed(2)}%</td>
+                <td style={{ color: "white" }}>{stock.delta50.toFixed(2)}%</td>
               </tr>
             ))}
           </tbody>
