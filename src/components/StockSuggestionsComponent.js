@@ -38,7 +38,13 @@ export function SocksSuggestions() {
       )}
       {error && <Alert variant="danger">{error}</Alert>}
       {!loading && !error && stocks.length > 0 && (
-        <Table striped bordered hover responsive>
+        <Table
+          striped
+          bordered
+          hover
+          responsive
+          style={{ marginBottom: "30px" }}
+        >
           <thead>
             <tr>
               <th style={{ color: "white" }}>Trading Symbol</th>

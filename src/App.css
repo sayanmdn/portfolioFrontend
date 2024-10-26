@@ -54,11 +54,16 @@
 .dataFormUpper{
     background-color: black;
 }
-.main-class{
+.main-class {
   background: linear-gradient(#112233, #002222);
   color: white;
   text-align: center;
   height: 92.7vh
+}
+
+.stocks-suggestions {
+  background: linear-gradient(#112233, #002222);
+  color: white;
 }
 
 @media screen and (min-width: 480px) {
