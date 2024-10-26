@@ -5,9 +5,9 @@ import { Login } from "./components/Login";
 import { Area1 } from "./components/Area1";
 import { Signup } from "./components/Signup";
 import { Warehouse } from "./components/Warehouse";
-import { Cake } from "./components/CakeContainer";
 import { NewsComponent } from "./components/NewsContainer";
 import { WriteComponent } from "./components/WriteComponent";
+import { SocksSuggestions } from "./components/StockSuggestionsComponent";
 import reactGa from "react-ga";
 
 import { Provider } from "react-redux";
@@ -44,6 +44,9 @@ function App() {
             </Route>
             <Route exact path="/write">
               <WriteComponent />
+            </Route>
+            <Route exact path="/stocks">
+              <SocksSuggestions />
             </Route>
           </div>
         </Switch>
