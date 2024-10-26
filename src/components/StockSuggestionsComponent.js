@@ -47,9 +47,9 @@ export function SocksSuggestions() {
         >
           <thead>
             <tr>
-              <th style={{ color: "white" }}>Trading Symbol</th>
-              <th style={{ color: "white" }}>Delta 200</th>
-              <th style={{ color: "white" }}>Delta 50</th>
+              <th style={{ color: "white" }}>Trading Symbol (NSE)</th>
+              <th style={{ color: "white" }}>Less than the 200 day average</th>
+              <th style={{ color: "white" }}>Less than the 50 day average</th>
             </tr>
           </thead>
           <tbody>
