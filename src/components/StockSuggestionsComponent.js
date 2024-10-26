@@ -13,7 +13,8 @@ export function SocksSuggestions() {
     axios
       .get(`${URL}stocks`)
       .then((res) => {
-        const recentData = res.data.data || [];
+        console.log(res.data);
+        const recentData = res.data[0].data || [];
         setStocks(recentData);
         setLoading(false);
       })

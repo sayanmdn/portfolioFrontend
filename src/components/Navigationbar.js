@@ -63,8 +63,8 @@ export function Navigationbar(props) {
             </Nav.Link>
           </NavItem>
           <NavItem>
-            <Nav.Link to="/news" as={Link}>
-              News
+            <Nav.Link to="/stocks" as={Link}>
+              Stock Suggestions
             </Nav.Link>
           </NavItem>
           {!auth.isLoggedIn && (
