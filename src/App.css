@@ -58,11 +58,38 @@
   background: linear-gradient(#112233, #002222);
   color: white;
   text-align: center;
-  height: 92.7vh
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 .stocks-suggestions {
   background: linear-gradient(#112233, #002222);
+  color: white;
+}
+
+.news-page {
+  background: linear-gradient(#112233, #002222);
+  color: white;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.news-page .container {
+  background: transparent;
+  padding-top: 2rem;
+}
+
+.news-page .alert {
+  margin: 1rem 0;
+}
+
+.news-page .card {
+  margin-bottom: 1.5rem;
+}
+
+.news-page h2, .news-page p {
   color: white;
 }
 
