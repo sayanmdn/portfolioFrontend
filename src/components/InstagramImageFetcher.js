@@ -5,34 +5,20 @@ import { URL } from "../config";
 
 export function InstagramImageFetcher() {
   const [postUrl, setPostUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [images, setImages] = useState([]);
+  const [imageCount, setImageCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const extractImageFromHtml = (html) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    
-    const ogImageMeta = doc.querySelector('meta[property="og:image"]');
-    if (ogImageMeta) {
-      return ogImageMeta.getAttribute("content");
-    }
-    
-    const ogImageSecureMeta = doc.querySelector('meta[property="og:image:secure_url"]');
-    if (ogImageSecureMeta) {
-      return ogImageSecureMeta.getAttribute("content");
-    }
-    
-    return null;
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setSuccess(false);
-    setImageUrl("");
+    setImages([]);
+    setImageCount(0);
 
     if (!postUrl.trim()) {
       setError("Please enter a valid Instagram post URL");
@@ -55,17 +41,12 @@ export function InstagramImageFetcher() {
         }
       });
 
-      if (response.data.code === "success" && response.data.html) {
-        const extractedImageUrl = extractImageFromHtml(response.data.html);
-        
-        if (extractedImageUrl) {
-          setImageUrl(extractedImageUrl);
-          setSuccess(true);
-        } else {
-          setError("Could not extract image from the Instagram post");
-        }
+      if (response.data.images && response.data.images.length > 0) {
+        setImages(response.data.images);
+        setImageCount(response.data.count || response.data.images.length);
+        setSuccess(true);
       } else {
-        setError("Failed to fetch Instagram post data");
+        setError("No images found in the Instagram post");
       }
     } catch (err) {
       console.error("Error fetching Instagram post:", err);
@@ -81,16 +62,22 @@ export function InstagramImageFetcher() {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = (imageUrl, index = 0) => {
     if (imageUrl) {
       const link = document.createElement("a");
       link.href = imageUrl;
-      link.download = `instagram-image-${Date.now()}.jpg`;
+      link.download = `instagram-image-${index + 1}-${Date.now()}.jpg`;
       link.target = "_blank";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
+  };
+
+  const handleDownloadAll = () => {
+    images.forEach((imageUrl, index) => {
+      setTimeout(() => handleDownload(imageUrl, index), index * 500);
+    });
   };
 
   return (
@@ -148,37 +135,50 @@ export function InstagramImageFetcher() {
             </Alert>
           )}
 
-          {success && imageUrl && (
+          {success && images.length > 0 && (
             <div className="mt-4">
               <Alert variant="success">
-                Image fetched successfully!
+                {imageCount === 1 ? '1 image' : `${imageCount} images`} fetched successfully!
               </Alert>
               
-              <Card>
-                <Card.Header className="d-flex justify-content-between align-items-center">
-                  <span>Fetched Image</span>
+              {images.length > 1 && (
+                <div className="mb-3 text-center">
                   <Button 
-                    variant="outline-primary" 
-                    size="sm"
-                    onClick={handleDownload}
+                    variant="primary" 
+                    onClick={handleDownloadAll}
                   >
-                    Download
+                    Download All Images
                   </Button>
-                </Card.Header>
-                <Card.Body className="text-center">
-                  <img
-                    src={imageUrl}
-                    alt="Instagram post"
-                    style={{ 
-                      maxWidth: "100%", 
-                      height: "auto",
-                      maxHeight: "500px",
-                      borderRadius: "8px"
-                    }}
-                    onError={() => setError("Failed to load the image")}
-                  />
-                </Card.Body>
-              </Card>
+                </div>
+              )}
+              
+              {images.map((imageUrl, index) => (
+                <Card key={index} className={index > 0 ? "mt-3" : ""}>
+                  <Card.Header className="d-flex justify-content-between align-items-center">
+                    <span>Image {index + 1}{images.length > 1 ? ` of ${imageCount}` : ''}</span>
+                    <Button 
+                      variant="outline-primary" 
+                      size="sm"
+                      onClick={() => handleDownload(imageUrl, index)}
+                    >
+                      Download
+                    </Button>
+                  </Card.Header>
+                  <Card.Body className="text-center">
+                    <img
+                      src={imageUrl}
+                      alt={`Instagram post image ${index + 1}`}
+                      style={{ 
+                        maxWidth: "100%", 
+                        height: "auto",
+                        maxHeight: "500px",
+                        borderRadius: "8px"
+                      }}
+                      onError={() => setError(`Failed to load image ${index + 1}`)}
+                    />
+                  </Card.Body>
+                </Card>
+              ))}
             </div>
           )}
         </Card.Body>
