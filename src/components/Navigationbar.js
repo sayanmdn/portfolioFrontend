@@ -95,6 +95,13 @@ export function Navigationbar(props) {
           )}
           {auth.isLoggedIn && (
             <NavItem>
+              <Nav.Link to="/instagram" as={Link}>
+                Instagram Fetcher
+              </Nav.Link>
+            </NavItem>
+          )}
+          {auth.isLoggedIn && (
+            <NavItem>
               <Nav.Link to="/warehouse" as={Link}>
                 Warehouse
               </Nav.Link>
