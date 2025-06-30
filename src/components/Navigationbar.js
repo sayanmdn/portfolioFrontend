@@ -43,19 +43,19 @@ export function Navigationbar(props) {
     <Navbar
       variant="dark"
       expand="lg"
-      style={{ background: "#112233", color: "white" }}
+      className="navbar"
     >
       <Navbar.Brand className="navbar-header">
         <Link
           to="/"
-          style={{ color: "#bbb", marginLeft: "100px" }}
+          className="navbar-brand-link"
           component={Nav.Link}
         >
           Sayantan's Webapps
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-nav-bar" style={{ marginRight: "100px" }}>
+      <Navbar.Collapse id="basic-nav-bar" className="navbar-collapse">
         <Nav className="ml-auto">
           <NavItem>
             <Nav.Link to="/" as={Link}>
