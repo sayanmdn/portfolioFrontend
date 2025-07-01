@@ -41,7 +41,7 @@ export function Navigationbar(props) {
 
   return (
     <Navbar
-      variant="dark"
+      variant="light"
       expand="lg"
       className="navbar"
     >

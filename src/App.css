@@ -122,7 +122,7 @@ code {
 
 /* Force Bootstrap Navbar Override */
 .navbar,
-.navbar-dark,
+.navbar-light,
 .navbar-expand-lg,
 .bg-dark,
 .bg-light {
@@ -153,16 +153,16 @@ code {
 }
 
 *[style*="background"] {
-  background: var(--surface-glass) !important;
+  background: var(--surface-glass);
 }
 
 /* Additional navbar menu visibility */
 .navbar .collapse {
-  background: var(--surface-glass) !important;
+  background: var(--surface-glass);
 }
 
 .navbar .navbar-nav {
-  background: transparent !important;
+  background: transparent;
 }
 
 /* Typography & Main Elements */
@@ -185,7 +185,7 @@ code {
 }
 
 .text-muted {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
 }
 
 /* Forms */
@@ -250,8 +250,8 @@ code {
 }
 
 .social-icon {
-  width: 32px !important;
-  height: 32px !important;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   filter: brightness(0.9);
   transition: filter 0.3s ease;
@@ -357,18 +357,18 @@ code {
 .news-page p,
 .news-page .card-title,
 .news-page .card-text {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 .news-page .card-title {
-  color: var(--text-primary) !important;
-  font-weight: 600 !important;
-  margin-bottom: 0.75rem !important;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .news-page .card-text {
-  color: var(--text-secondary) !important;
-  line-height: 1.6 !important;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 /* Additional news page title overrides */
@@ -380,8 +380,8 @@ code {
 .news-page .card h4,
 .news-page .card h5,
 .news-page .card h6 {
-  color: var(--text-primary) !important;
-  font-weight: 600 !important;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .news-page .card .card-body h1,
@@ -390,14 +390,14 @@ code {
 .news-page .card .card-body h4,
 .news-page .card .card-body h5,
 .news-page .card .card-body h6 {
-  color: var(--text-primary) !important;
-  font-weight: 600 !important;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .news-page .card .card-body p,
 .news-page .card .card-body span,
 .news-page .card .card-body div {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 /* Force light colors for any dark text in news cards */
@@ -405,17 +405,17 @@ code {
 .news-page .card *[style*="color: #000"],
 .news-page .card *[style*="color: rgb(0, 0, 0)"],
 .news-page .card *.text-dark {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 /* Override Bootstrap text utilities in news page */
 .news-page .text-dark,
 .news-page .text-black {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 .news-page .text-muted {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 /* Responsive Design & Media Queries */
@@ -445,7 +445,7 @@ code {
   padding: 0.5rem clamp(1rem, 5vw, 6rem) !important;
 }
 
-.navbar.navbar-dark {
+.navbar.navbar-light {
   background: var(--surface-glass) !important;
   background-color: var(--surface-glass) !important;
 }
@@ -455,8 +455,8 @@ code {
   background-color: var(--surface-glass) !important;
 }
 
-/* Dark navbar text colors with maximum specificity */
-.navbar-dark .navbar-brand,
+/* Light navbar text colors with maximum specificity */
+.navbar-light .navbar-brand,
 .navbar .navbar-brand,
 .navbar-brand {
   color: #1a1a2e !important;
@@ -464,7 +464,7 @@ code {
   font-size: 1.5rem !important;
 }
 
-.navbar-dark .navbar-brand:hover,
+.navbar-light .navbar-brand:hover,
 .navbar .navbar-brand:hover {
   color: var(--accent-primary) !important;
 }
@@ -485,7 +485,7 @@ code {
   text-decoration: none !important;
 }
 
-.navbar-dark .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link,
 .navbar .navbar-nav .nav-link,
 .navbar-nav .nav-link {
   color: rgba(26, 26, 46, 0.8) !important;
@@ -510,7 +510,7 @@ code {
   justify-content: space-between !important;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:hover {
   color: #1a1a2e !important;
@@ -518,21 +518,21 @@ code {
   transform: translateY(-1px) !important;
 }
 
-.navbar-dark .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.active,
 .navbar .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.active {
   color: var(--accent-primary) !important;
   background: var(--surface-glass-active) !important;
 }
 
-.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:focus,
 .navbar .navbar-nav .nav-link:focus,
 .navbar-nav .nav-link:focus {
   color: #1a1a2e !important;
 }
 
 .navbar-toggler,
-.navbar-dark .navbar-toggler {
+.navbar-light .navbar-toggler {
   border: 1px solid rgba(26, 26, 46, 0.3) !important;
   background: var(--surface-glass) !important;
 }
@@ -546,7 +546,7 @@ code {
 }
 
 .navbar-collapse,
-.navbar-dark .navbar-collapse,
+.navbar-light .navbar-collapse,
 .collapse.navbar-collapse {
   margin-right: clamp(1rem, 5vw, 6rem);
   margin-left: clamp(1rem, 5vw, 6rem);
@@ -570,7 +570,7 @@ code {
 /* Mobile navbar menu styling */
 @media (max-width: 991.98px) {
   .navbar-collapse,
-  .navbar-dark .navbar-collapse,
+  .navbar-light .navbar-collapse,
   .collapse.navbar-collapse {
     background: var(--bg-secondary) !important;
     backdrop-filter: blur(var(--blur-strong)) !important;
@@ -756,62 +756,62 @@ code {
 
 /* Bootstrap Component Overrides */
 .card {
-  background: var(--surface-glass) !important;
+  background: var(--surface-glass);
   backdrop-filter: blur(var(--blur-amount));
-  border: 1px solid var(--border-glass) !important;
-  border-radius: 16px !important;
-  color: var(--text-primary) !important;
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  color: var(--text-primary);
   box-shadow: var(--shadow-glass);
 }
 
 .card:hover {
-  background: var(--surface-glass-hover) !important;
-  border-color: var(--border-glass-strong) !important;
+  background: var(--surface-glass-hover);
+  border-color: var(--border-glass-strong);
   transform: translateY(-2px);
 }
 
 .card-title {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 .card-text {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 .alert {
-  background: var(--surface-glass) !important;
+  background: var(--surface-glass);
   backdrop-filter: blur(var(--blur-amount));
-  border: 1px solid var(--border-glass) !important;
-  border-radius: 12px !important;
-  color: var(--text-primary) !important;
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  color: var(--text-primary);
 }
 
 .alert-info {
-  border-color: var(--accent-primary) !important;
-  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .alert-warning {
-  border-color: #f59e0b !important;
-  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
 }
 
 .alert-success {
-  border-color: #10b981 !important;
-  background: rgba(16, 185, 129, 0.1) !important;
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
 }
 
 /* Text Color Overrides */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 p {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 .lead {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 /* List Styling */
@@ -1080,10 +1080,10 @@ li {
 }
 
 .footer-love {
-  color: var(--accent-primary) !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  margin-top: 1rem !important;
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
   animation: pulse 2s infinite;
 }
 
