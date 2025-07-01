@@ -471,7 +471,7 @@ code {
 
 .navbar .navbar-brand-link,
 .navbar-brand-link {
-  color: #1a1a2e !important;
+  color: var(--accent-primary) !important;
   text-decoration: none !important;
   font-weight: 700 !important;
   font-size: 1.5rem !important;
@@ -488,7 +488,7 @@ code {
 .navbar-light .navbar-nav .nav-link,
 .navbar .navbar-nav .nav-link,
 .navbar-nav .nav-link {
-  color: rgba(26, 26, 46, 0.8) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500 !important;
   padding: 0.75rem 1rem !important;
   border-radius: 8px !important;
@@ -513,7 +513,7 @@ code {
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:hover {
-  color: #1a1a2e !important;
+  color: #ffffff !important;
   background: var(--surface-glass-hover) !important;
   transform: translateY(-1px) !important;
 }
@@ -528,7 +528,7 @@ code {
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar .navbar-nav .nav-link:focus,
 .navbar-nav .nav-link:focus {
-  color: #1a1a2e !important;
+  color: #ffffff !important;
 }
 
 .navbar-toggler,
@@ -596,36 +596,36 @@ code {
     border-radius: 8px !important;
     margin: 0.25rem 0 !important;
     padding: 0.75rem 1rem !important;
-    color: rgba(26, 26, 46, 0.9) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
   }
   
   .navbar-collapse .navbar-nav .nav-link:hover {
     background: var(--surface-glass-hover) !important;
-    color: #1a1a2e !important;
+    color: #ffffff !important;
     transform: translateX(4px) !important;
   }
 }
 
 /* Additional safeguards for navbar visibility */
 .navbar a {
-  color: rgba(26, 26, 46, 0.8) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .navbar a:hover {
-  color: #1a1a2e !important;
+  color: #ffffff !important;
 }
 
 /* Override any potential Bootstrap text utilities */
 .navbar .text-muted {
-  color: rgba(26, 26, 46, 0.6) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .navbar .text-light {
-  color: #1a1a2e !important;
+  color: #ffffff !important;
 }
 
 .navbar .text-dark {
-  color: #1a1a2e !important;
+  color: #ffffff !important;
 }
 
 /* Layout Adjustments */

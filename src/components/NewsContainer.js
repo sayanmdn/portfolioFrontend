@@ -369,7 +369,7 @@ export function NewsComponent(props) {
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-decoration-none"
-                          style={{ color: 'black' }}
+                          style={{ color: 'white' }}
                         >
                           {article.title}
                         </a>
