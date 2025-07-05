@@ -1,4 +1,4 @@
-import { BUY_CAKE, SET_AUTH_USER, REMOVE_AUTH_USER } from "./actionTypes";
+import { BUY_CAKE, SET_AUTH_USER, REMOVE_AUTH_USER, SSO_AUTH_START, SSO_AUTH_SUCCESS, SSO_AUTH_FAILURE } from "./actionTypes";
 
 export const buyCake = () =>{
   return {
@@ -16,5 +16,25 @@ export const initAuth = (userObj) => {
 export const delAuth = () => {
   return {
     type: REMOVE_AUTH_USER,
+  }
+}
+
+export const ssoAuthStart = () => {
+  return {
+    type: SSO_AUTH_START,
+  }
+}
+
+export const ssoAuthSuccess = (userObj) => {
+  return {
+    type: SSO_AUTH_SUCCESS,
+    payload: userObj
+  }
+}
+
+export const ssoAuthFailure = (error) => {
+  return {
+    type: SSO_AUTH_FAILURE,
+    payload: error
   }
 }

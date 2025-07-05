@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { initAuth } from "../../redux/actions";
 import { URL } from "../../config";
+import { GoogleSSOButton, MicrosoftSSOButton, GenericSSOButton } from "../SSOButton";
 
 export function Loginform(props) {
   var [loginSuccess, setLoginSuccess] = useState(false);
@@ -13,6 +14,7 @@ export function Loginform(props) {
   var [validationError, setValidationError] = useState(null);
   let history = useHistory();
   let dispatch = useDispatch();
+  const { ssoError } = useSelector(state => state.auth);
 
   const formik = useFormik({
     initialValues: {
@@ -108,6 +110,28 @@ export function Loginform(props) {
             Login
           </Button>
         </Form>
+        
+        <div style={{ margin: "20px 0" }}>
+          <hr style={{ backgroundColor: "#ccc" }} />
+          <p style={{ textAlign: "center", color: "#666" }}>Or continue with</p>
+        </div>
+        
+        <div style={{ maxWidth: "300px", margin: "0 auto" }}>
+          <GoogleSSOButton />
+          <MicrosoftSSOButton />
+          <GenericSSOButton />
+          
+          {ssoError && (
+            <div style={{ 
+              color: "red", 
+              textAlign: "center", 
+              marginTop: "10px",
+              fontSize: "14px"
+            }}>
+              SSO Error: {ssoError}
+            </div>
+          )}
+        </div>
       </div>
     );
 }

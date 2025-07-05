@@ -9,6 +9,7 @@ import { NewsComponent } from "./components/NewsContainer";
 import { WriteComponent } from "./components/WriteComponent";
 import { SocksSuggestions } from "./components/StockSuggestionsComponent";
 import { InstagramImageFetcher } from "./components/InstagramImageFetcher";
+import { SSOCallback } from "./components/SSOCallback";
 import reactGa from "react-ga";
 
 import { Provider } from "react-redux";
@@ -51,6 +52,9 @@ function App() {
             </Route>
             <Route exact path="/instagram">
               <InstagramImageFetcher />
+            </Route>
+            <Route exact path="/sso/callback">
+              <SSOCallback />
             </Route>
           </div>
         </Switch>
