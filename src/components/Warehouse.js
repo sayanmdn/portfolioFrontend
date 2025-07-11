@@ -58,7 +58,7 @@ export function Warehouse(props) {
   });
 
   return (
-    <div className="warehouse-main">
+    <div className="warehouse-main max-w-4xl mx-auto px-4 py-8">
       <div className="dataForm">
         <h2 className="text-2xl font-bold text-white mb-6">HTTP Logger</h2>
         <form className="data-form" onSubmit={formik.handleSubmit}>
@@ -80,14 +80,14 @@ export function Warehouse(props) {
           </button>
         </form>
       </div>
-      <div className="data-api">
+      <div className="data-api max-w-full overflow-x-auto">
         <p className="text-text-secondary mb-4">
           You can also log your data from your application. Api details are
           given below
         </p>
-        <code className="text-primary-light block mb-2">Link: {URL}user/save</code>
+        <code className="text-primary-light block mb-2 text-sm break-all">Link: {URL}user/save</code>
         <br />
-        <code className="text-primary-light block">
+        <code className="text-primary-light block text-sm break-all whitespace-pre-wrap">
           Request method: POST, Object:
           {`{"token":"` +
             stateToken +
@@ -98,17 +98,17 @@ export function Warehouse(props) {
             }`}
         </code>
       </div>
-      <div className="dataFormUpper" style={{ marginTop: "150px" }}>
+      <div className="dataFormUpper max-w-full overflow-x-auto" style={{ marginTop: "150px" }}>
         <h2 className="text-2xl font-bold text-white mb-6">Your saved data</h2>
         <button className="btn-primary-glass mb-8" onClick={() => fetchData()}>
           Fetch Data
         </button>
-        <ol>
+        <ol className="break-all">
           {testData
             .slice(0)
             .reverse()
             .map((data) => {
-              return <li>{JSON.stringify(data.data.data)}</li>;
+              return <li className="mb-2 p-2 bg-surface-glass rounded text-sm">{JSON.stringify(data.data.data)}</li>;
             })}
         </ol>
       </div>
