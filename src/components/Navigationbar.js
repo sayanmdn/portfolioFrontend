@@ -7,7 +7,6 @@ import { URL } from "../config";
 
 export function Navigationbar(props) {
   let history = useHistory();
-  const [expanded, setExpanded] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -36,20 +35,11 @@ export function Navigationbar(props) {
     localStorage.setItem("token", null);
     dispatch(delAuth());
     history.push("/login");
-    setExpanded(false);
-  };
-
-  const closeNavbar = () => {
-    setExpanded(false);
-  };
-
-  const handleToggle = () => {
-    setExpanded(!expanded);
   };
 
   return (
     <nav 
-      className="w-full flex items-center justify-between px-6 py-4 md:px-12 lg:px-24"
+      className="w-full flex items-center justify-between px-6 py-4 md:px-12 lg:px-24 relative"
       style={{
         background: 'rgba(255, 255, 255, 0.05)',
         backdropFilter: 'blur(24px)',
@@ -75,36 +65,8 @@ export function Navigationbar(props) {
         </Link>
       </div>
 
-      {/* Mobile Menu Button */}
-      <button
-        className="lg:hidden p-2 rounded-lg border transition-colors duration-300"
-        style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderColor: 'rgba(255, 255, 255, 0.1)'
-        }}
-        onClick={handleToggle}
-        aria-label="Toggle navigation"
-        onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.08)'}
-        onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.05)'}
-      >
-        <svg
-          className="w-6 h-6"
-          style={{ color: '#ffffff' }}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
-
-      {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center space-x-8">
+      {/* Navigation */}
+      <div className="flex items-center space-x-8">
         <Link
           to="/"
           className="transition-colors duration-300 font-medium"
@@ -222,201 +184,6 @@ export function Navigationbar(props) {
         )}
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <div
-        className={`lg:hidden absolute top-full left-0 w-full border rounded-b-lg transform transition-all duration-300 ${
-          expanded 
-            ? 'translate-y-0 opacity-100 visible' 
-            : '-translate-y-4 opacity-0 invisible'
-        }`}
-        style={{
-          background: '#151520',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
-          borderColor: 'rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
-        }}
-      >
-        <div className="flex flex-col space-y-2 p-6">
-          <Link
-            to="/"
-            onClick={closeNavbar}
-            className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-            style={{ 
-              color: 'rgba(255, 255, 255, 0.8)', 
-              textDecoration: 'none' 
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = '#ffffff';
-              e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-              e.target.style.background = 'transparent';
-            }}
-          >
-            Home
-          </Link>
-          <Link
-            to="/news"
-            onClick={closeNavbar}
-            className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-            style={{ 
-              color: 'rgba(255, 255, 255, 0.8)', 
-              textDecoration: 'none' 
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = '#ffffff';
-              e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-              e.target.style.background = 'transparent';
-            }}
-          >
-            News
-          </Link>
-          <Link
-            to="/stocks"
-            onClick={closeNavbar}
-            className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-            style={{ 
-              color: 'rgba(255, 255, 255, 0.8)', 
-              textDecoration: 'none' 
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = '#ffffff';
-              e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-              e.target.style.background = 'transparent';
-            }}
-          >
-            Stock Suggestions
-          </Link>
-          {!auth.isLoggedIn && (
-            <>
-              <Link
-                to="/signup"
-                onClick={closeNavbar}
-                className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-                style={{ 
-                  color: 'rgba(255, 255, 255, 0.8)', 
-                  textDecoration: 'none' 
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ffffff';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.target.style.background = 'transparent';
-                }}
-              >
-                Signup
-              </Link>
-              <Link
-                to="/login"
-                onClick={closeNavbar}
-                className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-                style={{ 
-                  color: 'rgba(255, 255, 255, 0.8)', 
-                  textDecoration: 'none' 
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ffffff';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.target.style.background = 'transparent';
-                }}
-              >
-                Login
-              </Link>
-            </>
-          )}
-          {auth.isLoggedIn && (
-            <>
-              <Link
-                to="/write"
-                onClick={closeNavbar}
-                className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-                style={{ 
-                  color: 'rgba(255, 255, 255, 0.8)', 
-                  textDecoration: 'none' 
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ffffff';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.target.style.background = 'transparent';
-                }}
-              >
-                Rewrite
-              </Link>
-              <Link
-                to="/instagram"
-                onClick={closeNavbar}
-                className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-                style={{ 
-                  color: 'rgba(255, 255, 255, 0.8)', 
-                  textDecoration: 'none' 
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ffffff';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.target.style.background = 'transparent';
-                }}
-              >
-                Instagram Fetcher
-              </Link>
-              <Link
-                to="/warehouse"
-                onClick={closeNavbar}
-                className="transition-colors duration-300 font-medium py-2 px-4 rounded-lg"
-                style={{ 
-                  color: 'rgba(255, 255, 255, 0.8)', 
-                  textDecoration: 'none' 
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ffffff';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.target.style.background = 'transparent';
-                }}
-              >
-                Warehouse
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer py-2 px-4 rounded-lg text-left"
-                style={{ 
-                  color: 'rgba(255, 255, 255, 0.8)'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ffffff';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.target.style.background = 'transparent';
-                }}
-              >
-                Logout
-              </button>
-            </>
-          )}
-        </div>
-      </div>
     </nav>
   );
 }

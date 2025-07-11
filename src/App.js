@@ -1,3 +1,4 @@
+import "./tailwind.css";
 import "./App.css";
 import { useEffect } from "react";
 import { Navigationbar } from "./components/Navigationbar";
