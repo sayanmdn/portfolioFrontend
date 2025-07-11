@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ssoAuthStart, ssoAuthFailure } from "../redux/actions";
 import { ssoService } from "../services/ssoService";
@@ -20,8 +19,7 @@ export function SSOButton({ provider, children, style }) {
   };
 
   return (
-    <Button
-      variant="outline-primary"
+    <button
       onClick={handleSSOLogin}
       disabled={ssoLoading}
       style={{
@@ -30,11 +28,17 @@ export function SSOButton({ provider, children, style }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        padding: "10px",
+        border: "1px solid #007bff",
+        backgroundColor: "transparent",
+        color: "#007bff",
+        borderRadius: "4px",
+        cursor: ssoLoading ? "not-allowed" : "pointer",
         ...style
       }}
     >
       {ssoLoading ? "Connecting..." : children}
-    </Button>
+    </button>
   );
 }
 
