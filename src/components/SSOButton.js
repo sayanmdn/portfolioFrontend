@@ -1,4 +1,4 @@
-import React from "react";
+// React import removed - not needed with new JSX transform
 import { useDispatch, useSelector } from "react-redux";
 import { ssoAuthStart, ssoAuthFailure } from "../redux/actions";
 import { ssoService } from "../services/ssoService";

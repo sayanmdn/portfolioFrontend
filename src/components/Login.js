@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Loginform } from "./forms/LoginForm";
 import { SSOLogin } from "./SSOLogin";
 import { delAuth } from "../redux/actions";

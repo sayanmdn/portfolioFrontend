@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Typewriter } from "react-typewriting-effect";
 import "react-typewriting-effect/dist/index.css";
 import gitLogo from "./../assets/github.svg";

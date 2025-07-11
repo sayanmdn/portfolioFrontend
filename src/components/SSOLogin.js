@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import workosService from '../services/workos';
 
 export function SSOLogin() {

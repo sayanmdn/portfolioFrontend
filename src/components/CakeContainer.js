@@ -1,4 +1,4 @@
-import React from 'react'
+// React import removed - not needed with new JSX transform
 import { useSelector, useDispatch } from "react-redux";
 import { buyCake } from "../redux/actions";
 import { useHistory } from "react-router-dom";
