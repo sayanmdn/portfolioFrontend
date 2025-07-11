@@ -23,7 +23,6 @@ export function Area1(props) {
               className="typeWritter"
             />
           </div>
-          {isHidden ? null : <Writer2 />}
         </div>
         <div className="home-social-links">
           <a href="https://github.com/sayanmdn" className="social-link">
