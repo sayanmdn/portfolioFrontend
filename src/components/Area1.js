@@ -1,27 +1,13 @@
-import { useState } from "react";
-import { Typewriter } from "react-typewriting-effect";
-import "react-typewriting-effect/dist/index.css";
 import gitLogo from "./../assets/github.svg";
 import linkedinLogo from "./../assets/linkedin-logo.svg";
 
 export function Area1(props) {
-  const [isHidden, setisHidden] = useState(true);
-  const onFirstlineComplete = () => {
-    setisHidden(false);
-  };
-
   return (
     <div className="body-backgroud">
       <div className="home-upper">
         <div className="Area1">
           <div>
-            <Typewriter
-              string="Hi, I am Sayantan Mishra"
-              delay={80}
-              stopBlinkinOnComplete
-              onComplete={onFirstlineComplete}
-              className="typeWritter"
-            />
+            <h1 className="typeWritter">Hi, I am Sayantan Mishra</h1>
           </div>
         </div>
         <div className="home-social-links">
@@ -236,11 +222,7 @@ export function Area1(props) {
 export function Writer2(props) {
   return (
     <div>
-      <Typewriter
-        string="Full Stack Developer"
-        delay={30}
-        stopBlinkinOnComplete
-      />
+      <span>Full Stack Developer</span>
     </div>
   );
 }

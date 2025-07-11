@@ -178,9 +178,6 @@ code {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  animation: 2s fadeInUp ease-out;
-  animation-fill-mode: forwards;
-  opacity: 0;
 }
 
 .home-social-links a {
@@ -221,16 +218,6 @@ code {
   filter: brightness(1.2);
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* Projects Section */
 .home-projects {
