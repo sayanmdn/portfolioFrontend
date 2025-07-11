@@ -8,6 +8,7 @@ import reactGa from "react-ga";
 export function Warehouse(props) {
   const [testData, setTestData] = useState([]);
   const [stateToken, setStateToken] = useState("");
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   useEffect(() => {
     const authToken = localStorage.getItem("token");
