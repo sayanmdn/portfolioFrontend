@@ -1,113 +1,75 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { ssoAuthSuccess, ssoAuthFailure } from "../redux/actions";
-import { ssoService } from "../services/ssoService";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import workosService from '../services/workos';
+import { initAuth } from '../redux/actions';
 
 export function SSOCallback() {
-  const [status, setStatus] = useState("processing");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const handleCallback = async () => {
       try {
-        const params = new URLSearchParams(location.search);
-        const code = params.get("code");
-        const state = params.get("state");
-        const error = params.get("error");
-
-        if (error) {
-          throw new Error(error);
-        }
-
-        if (!code) {
-          throw new Error("No authorization code received");
-        }
-
-        setStatus("authenticating");
+        const user = await workosService.getUser();
         
-        const response = await ssoService.handleCallback(code, state);
-        
-        if (response.token) {
-          localStorage.setItem("token", response.token);
-          dispatch(ssoAuthSuccess(response.user));
-          setStatus("success");
+        if (user) {
+          localStorage.setItem('token', user.id);
+          dispatch(initAuth({
+            id: user.id,
+            email: user.email,
+            name: user.firstName + ' ' + user.lastName,
+            firstName: user.firstName,
+            lastName: user.lastName
+          }));
           
-          setTimeout(() => {
-            history.push("/warehouse");
-          }, 1000);
+          history.push('/warehouse');
         } else {
-          throw new Error("No token received from SSO");
+          setError('Authentication failed. Please try again.');
+          setTimeout(() => {
+            history.push('/login');
+          }, 3000);
         }
-      } catch (error) {
-        console.error("SSO callback error:", error);
-        dispatch(ssoAuthFailure(error.message));
-        setStatus("error");
-        
+      } catch (err) {
+        console.error('SSO Callback Error:', err);
+        setError('Authentication failed. Please try again.');
         setTimeout(() => {
-          history.push("/login");
+          history.push('/login');
         }, 3000);
+      } finally {
+        setLoading(false);
       }
     };
 
     handleCallback();
-  }, [location.search, history, dispatch]);
+  }, [history, dispatch]);
 
-  const renderContent = () => {
-    switch (status) {
-      case "processing":
-        return (
-          <div>
-            <div className="spinner-border" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-            <h3>Processing SSO login...</h3>
-          </div>
-        );
-      case "authenticating":
-        return (
-          <div>
-            <div className="spinner-border" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-            <h3>Authenticating...</h3>
-          </div>
-        );
-      case "success":
-        return (
-          <div>
-            <h3>✅ Login successful!</h3>
-            <p>Redirecting to your dashboard...</p>
-          </div>
-        );
-      case "error":
-        return (
-          <div>
-            <h3>❌ Login failed</h3>
-            <p>Redirecting to login page...</p>
-          </div>
-        );
-      default:
-        return <div>Unknown status</div>;
-    }
-  };
+  if (loading) {
+    return (
+      <div className="max-w-6xl mx-auto px-4 flex justify-center items-center min-h-screen">
+        <div className="text-center">
+          <div className="spinner-glass w-8 h-8 mx-auto mb-6"></div>
+          <p className="text-text-secondary">Completing authentication...</p>
+        </div>
+      </div>
+    );
+  }
 
-  return (
-    <div
-      style={{
-        background: "linear-gradient(#112233, #002222)",
-        color: "white",
-        textAlign: "center",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      {renderContent()}
-    </div>
-  );
+  if (error) {
+    return (
+      <div className="max-w-6xl mx-auto px-4 flex justify-center items-center min-h-screen">
+        <div className="alert-glass alert-danger text-center max-w-md">
+          <h4 className="text-lg font-semibold mb-4">Authentication Error</h4>
+          <p className="mb-4">{error}</p>
+          <p>Redirecting to login page...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
 }
+
+export default SSOCallback;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ProgressBar from "react-bootstrap/ProgressBar";
 
 function CustomProgressBar() {
   const [now, setNow] = useState(0);
@@ -26,12 +25,14 @@ function CustomProgressBar() {
   }, []);
 
   return (
-    <ProgressBar
-      now={now}
-      label={`${now.toFixed(2)}%`}
-      visuallyHidden={false}
-      style={{ width: "100%" }} // Force the progress bar to fill the entire width
-    />
+    <div className="w-full h-full bg-surface-glass rounded-full overflow-hidden">
+      <div 
+        className="h-full bg-accent-gradient transition-all duration-100 ease-out rounded-full"
+        style={{ width: `${now}%` }}
+      >
+        <span className="sr-only">{now.toFixed(2)}%</span>
+      </div>
+    </div>
   );
 }
 

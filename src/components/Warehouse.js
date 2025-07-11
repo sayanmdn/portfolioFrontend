@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import { URL } from "../config";
 import reactGa from "react-ga";
@@ -66,31 +65,34 @@ export function Warehouse(props) {
   return (
     <div className="warehouse-main">
       <div className="dataForm">
-        <h2>HTTP Logger</h2>
-        <Form className="data-form" onSubmit={formik.handleSubmit}>
-          <Form.Group controlId="formBasicName">
-            <Form.Label>Anything you want to save</Form.Label>
-            <Form.Control
+        <h2 className="text-2xl font-bold text-white mb-6">HTTP Logger</h2>
+        <form className="data-form" onSubmit={formik.handleSubmit}>
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
+              Anything you want to save
+            </label>
+            <input
               type="text"
               name="data"
+              className="input-glass w-full"
               placeholder="Enter data"
               onChange={formik.handleChange}
               value={formik.values.data}
             />
-          </Form.Group>
-          <Button variant="primary" type="submit">
+          </div>
+          <button type="submit" className="btn-primary-glass">
             Submit Data
-          </Button>
-        </Form>
+          </button>
+        </form>
       </div>
       <div className="data-api">
-        <p>
+        <p className="text-text-secondary mb-4">
           You can also log your data from your application. Api details are
           given below
         </p>
-        <code>Link: {URL}user/save</code>
+        <code className="text-primary-light block mb-2">Link: {URL}user/save</code>
         <br />
-        <code>
+        <code className="text-primary-light block">
           Request method: POST, Object:
           {`{"token":"` +
             stateToken +
@@ -102,10 +104,10 @@ export function Warehouse(props) {
         </code>
       </div>
       <div className="dataFormUpper" style={{ marginTop: "150px" }}>
-        <h2>Your saved data</h2>
-        <Button style={{ marginBottom: "30px" }} onClick={() => fetchData()}>
+        <h2 className="text-2xl font-bold text-white mb-6">Your saved data</h2>
+        <button className="btn-primary-glass mb-8" onClick={() => fetchData()}>
           Fetch Data
-        </Button>
+        </button>
         <ol>
           {testData
             .slice(0)

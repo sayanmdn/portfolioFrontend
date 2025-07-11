@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Table, Spinner, Alert } from "react-bootstrap";
 import { URL } from "../config";
 
 export function SocksSuggestions() {
@@ -27,44 +26,46 @@ export function SocksSuggestions() {
 
   return (
     <div className="stocks-suggestions">
-      <h2>Stocks Suggestions</h2>
+      <h2 className="text-2xl font-bold text-white mb-6">Stocks Suggestions</h2>
       {loading && (
-        <div style={{ textAlign: "center" }}>
-          <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-          <p>Loading stock data...</p>
+        <div className="text-center">
+          <div className="spinner-glass w-8 h-8 mx-auto mb-4"></div>
+          <p className="text-text-secondary">Loading stock data...</p>
         </div>
       )}
-      {error && <Alert variant="danger">{error}</Alert>}
+      {error && <div className="alert-glass alert-danger">{error}</div>}
       {!loading && !error && stocks.length > 0 && (
-        <Table
-          striped
-          bordered
-          hover
-          responsive
-          style={{ marginBottom: "30px" }}
-        >
-          <thead>
-            <tr>
-              <th style={{ color: "white" }}>Trading Symbol (NSE)</th>
-              <th style={{ color: "white" }}>Less than the 200 day average</th>
-              <th style={{ color: "white" }}>Less than the 50 day average</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stocks.map((stock) => (
-              <tr key={stock._id}>
-                <td style={{ color: "white" }}>{stock.trading_symbol}</td>
-                <td style={{ color: "white" }}>{stock.delta200.toFixed(2)}%</td>
-                <td style={{ color: "white" }}>{stock.delta50.toFixed(2)}%</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <div className="glass-card overflow-hidden mb-8">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-white/5">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-medium text-white border-b border-white/20">
+                    Trading Symbol (NSE)
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-medium text-white border-b border-white/20">
+                    Less than the 200 day average
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-medium text-white border-b border-white/20">
+                    Less than the 50 day average
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/10">
+                {stocks.map((stock) => (
+                  <tr key={stock._id} className="hover:bg-white/5 transition-colors">
+                    <td className="px-6 py-4 text-white">{stock.trading_symbol}</td>
+                    <td className="px-6 py-4 text-white">{stock.delta200.toFixed(2)}%</td>
+                    <td className="px-6 py-4 text-white">{stock.delta50.toFixed(2)}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )}
       {!loading && !error && stocks.length === 0 && (
-        <p style={{ textAlign: "center" }}>No stock data available.</p>
+        <p className="text-center text-text-secondary">No stock data available.</p>
       )}
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Form, Button, Card, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
 import { URL } from "../config";
 
@@ -81,108 +80,97 @@ export function InstagramImageFetcher() {
   };
 
   return (
-    <div className="container mt-4">
-      <Card>
-        <Card.Header>
-          <h3>Instagram Image Fetcher</h3>
-          <p className="text-muted mb-0">
+    <div className="max-w-6xl mx-auto px-4 mt-8">
+      <div className="glass-card">
+        <div className="p-6 border-b border-white/20">
+          <h3 className="text-xl font-bold text-white mb-2">Instagram Image Fetcher</h3>
+          <p className="text-text-secondary mb-0">
             Enter an Instagram post URL to fetch and download the main image
           </p>
-        </Card.Header>
-        <Card.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Instagram Post URL</Form.Label>
-              <Form.Control
+        </div>
+        <div className="p-6">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-text-secondary mb-2">
+                Instagram Post URL
+              </label>
+              <input
                 type="url"
+                className="input-glass w-full"
                 placeholder="https://www.instagram.com/p/ABC123/"
                 value={postUrl}
                 onChange={(e) => setPostUrl(e.target.value)}
                 disabled={loading}
               />
-              <Form.Text className="text-muted">
+              <p className="text-text-secondary text-sm mt-2">
                 Enter the full URL of the Instagram post
-              </Form.Text>
-            </Form.Group>
+              </p>
+            </div>
             
-            <Button 
-              variant="primary" 
+            <button 
               type="submit" 
               disabled={loading}
-              className="mb-3"
+              className="btn-primary-glass mb-6"
             >
               {loading ? (
                 <>
-                  <Spinner
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                    className="me-2"
-                  />
+                  <div className="spinner-glass w-4 h-4 mr-2 inline-block"></div>
                   Fetching...
                 </>
               ) : (
                 "Fetch Image"
               )}
-            </Button>
-          </Form>
+            </button>
+          </form>
 
           {error && (
-            <Alert variant="danger" className="mt-3">
+            <div className="alert-glass alert-danger mt-6">
               {error}
-            </Alert>
+            </div>
           )}
 
           {success && images.length > 0 && (
-            <div className="mt-4">
-              <Alert variant="success">
+            <div className="mt-8">
+              <div className="alert-glass alert-success">
                 {imageCount === 1 ? '1 image' : `${imageCount} images`} fetched successfully!
-              </Alert>
+              </div>
               
               {images.length > 1 && (
-                <div className="mb-3 text-center">
-                  <Button 
-                    variant="primary" 
+                <div className="mb-6 text-center">
+                  <button 
+                    className="btn-primary-glass"
                     onClick={handleDownloadAll}
                   >
                     Download All Images
-                  </Button>
+                  </button>
                 </div>
               )}
               
               {images.map((imageUrl, index) => (
-                <Card key={index} className={index > 0 ? "mt-3" : ""}>
-                  <Card.Header className="d-flex justify-content-between align-items-center">
-                    <span>Image {index + 1}{images.length > 1 ? ` of ${imageCount}` : ''}</span>
-                    <Button 
-                      variant="outline-primary" 
-                      size="sm"
+                <div key={index} className={`glass-card ${index > 0 ? "mt-6" : ""}`}>
+                  <div className="p-4 border-b border-white/20 flex justify-between items-center">
+                    <span className="text-white">Image {index + 1}{images.length > 1 ? ` of ${imageCount}` : ''}</span>
+                    <button 
+                      className="btn-secondary-glass text-sm px-3 py-1"
                       onClick={() => handleDownload(imageUrl, index)}
                     >
                       Download
-                    </Button>
-                  </Card.Header>
-                  <Card.Body className="text-center">
+                    </button>
+                  </div>
+                  <div className="p-6 text-center">
                     <img
                       src={imageUrl}
                       alt={`Instagram post image ${index + 1}`}
-                      style={{ 
-                        maxWidth: "100%", 
-                        height: "auto",
-                        maxHeight: "500px",
-                        borderRadius: "8px"
-                      }}
+                      className="max-w-full h-auto max-h-96 rounded-lg"
                       onError={() => setError(`Failed to load image ${index + 1}`)}
                     />
-                  </Card.Body>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           )}
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

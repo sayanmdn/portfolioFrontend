@@ -53,7 +53,7 @@ function App() {
             <Route exact path="/instagram">
               <InstagramImageFetcher />
             </Route>
-            <Route exact path="/sso/callback">
+            <Route exact path="/callback">
               <SSOCallback />
             </Route>
           </div>

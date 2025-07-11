@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import { useFormik } from 'formik';
 import axios from "axios";
 import {URL} from '../../config'
@@ -63,45 +62,92 @@ export function SignupForm(props) {
             })
         }
     if(signupSuccess) return (
-        <div>
-        <h2>Signup Successful</h2>
-        <h3>Please try to login</h3>
+        <div className="glass-card max-w-md mx-auto mt-8">
+            <h2 className="text-2xl font-bold text-center text-text-primary mb-4">Signup Successful</h2>
+            <h3 className="text-lg text-center text-text-secondary">Please try to login</h3>
         </div>
         )
         else return (
-        <div>
-            <Form className="login-form" onSubmit={formik.handleSubmit}>
-            <Form.Group controlId="formBasicName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="name" name="name" placeholder="Enter name" onChange={formik.handleChange} value={formik.values.name}/>
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" name="email" readOnly={otpSentSuccessfully} onChange={formik.handleChange} value={formik.values.email} />
-                <Form.Text className="text-muted" hidden={!emailAlreadyExists}>
-                This email is already exists, try with another email
-                </Form.Text>
-                <Form.Text className="text-muted">
-                <Button onClick={sendOTP} hidden={otpSentSuccessfully}>Send OTP to my email</Button>
-                </Form.Text>
-            </Form.Group>
-            <Form.Group controlId="formBasicOTP">
-                <Form.Label>OTP</Form.Label>
-                <Form.Control type="otp" name="otp" placeholder="Enter otp" onChange={formik.handleChange} value={formik.values.otp}/>
+        <div className="max-w-md mx-auto mt-8">
+            <form className="glass-card" onSubmit={formik.handleSubmit}>
+                <div className="mb-6">
+                    <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">Name</label>
+                    <input 
+                        type="text" 
+                        id="name"
+                        name="name" 
+                        placeholder="Enter name" 
+                        onChange={formik.handleChange} 
+                        value={formik.values.name}
+                        className="input-glass w-full"
+                    />
+                </div>
                 
-            </Form.Group>
+                <div className="mb-6">
+                    <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">Email address</label>
+                    <input 
+                        type="email" 
+                        id="email"
+                        placeholder="Enter email" 
+                        name="email" 
+                        readOnly={otpSentSuccessfully} 
+                        onChange={formik.handleChange} 
+                        value={formik.values.email}
+                        className="input-glass w-full"
+                    />
+                    {emailAlreadyExists && (
+                        <p className="text-red-400 text-sm mt-2">
+                            This email already exists, try with another email
+                        </p>
+                    )}
+                    <div className="mt-3">
+                        {!otpSentSuccessfully && (
+                            <button 
+                                type="button"
+                                onClick={sendOTP} 
+                                className="btn-glass text-sm"
+                            >
+                                Send OTP to my email
+                            </button>
+                        )}
+                    </div>
+                </div>
+                
+                <div className="mb-6">
+                    <label htmlFor="otp" className="block text-sm font-medium text-text-secondary mb-2">OTP</label>
+                    <input 
+                        type="text" 
+                        id="otp"
+                        name="otp" 
+                        placeholder="Enter otp" 
+                        onChange={formik.handleChange} 
+                        value={formik.values.otp}
+                        className="input-glass w-full"
+                    />
+                </div>
 
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name="password" onChange={formik.handleChange} value={formik.values.password}/>
-                <Form.Text className="text-muted" hidden={!passwordValidationError}>
-                Error: {passwordValidationError}
-                </Form.Text>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Signup
-            </Button>
-            </Form>
+                <div className="mb-6">
+                    <label htmlFor="password" className="block text-sm font-medium text-text-secondary mb-2">Password</label>
+                    <input 
+                        type="password" 
+                        id="password"
+                        placeholder="Password" 
+                        name="password" 
+                        onChange={formik.handleChange} 
+                        value={formik.values.password}
+                        className="input-glass w-full"
+                    />
+                    {passwordValidationError && (
+                        <p className="text-red-400 text-sm mt-2">
+                            Error: {passwordValidationError}
+                        </p>
+                    )}
+                </div>
+                
+                <button type="submit" className="btn-primary-glass w-full">
+                    Signup
+                </button>
+            </form>
         </div>
     )
 }

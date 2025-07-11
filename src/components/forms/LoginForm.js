@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
@@ -57,81 +56,61 @@ export function Loginform(props) {
   });
   if (loginSuccess) {
     return (
-      <div>
-        <h2>Login Successful</h2>
-        {/* {loginSuccess && (
-                <button>You are signed in</button>
-            )} */}
+      <div className="glass-card max-w-md mx-auto mt-8">
+        <h2 className="text-2xl font-bold text-center text-text-primary">Login Successful</h2>
       </div>
     );
   } else
     return (
-      <div>
-        <Form className="login-form" onSubmit={formik.handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
+      <div className="max-w-md mx-auto mt-8">
+        <form className="glass-card" onSubmit={formik.handleSubmit}>
+          <div className="mb-6">
+            <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
+              Email address
+            </label>
+            <input
               type="email"
-              placeholder="Enter email"
+              id="email"
               name="email"
+              placeholder="Enter email"
               onChange={formik.handleChange}
               value={formik.values.email}
+              className="input-glass w-full"
             />
-            <Form.Text className="text-muted">
+            <p className="text-text-muted text-sm mt-2">
               Your information will be kept confidential.
-            </Form.Text>
-          </Form.Group>
+            </p>
+          </div>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-sm font-medium text-text-secondary mb-2">
+              Password
+            </label>
+            <input
               type="password"
-              placeholder="Password"
+              id="password"
               name="password"
+              placeholder="Password"
               onChange={formik.handleChange}
               value={formik.values.password}
+              className="input-glass w-full"
             />
-            <Form.Text
-              className="text-muted"
-              hidden={!authFailed}
-              style={{ color: "red !important" }}
-            >
-              Email or password is wrong
-            </Form.Text>
-            <Form.Text
-              className="text-muted"
-              hidden={!validationError}
-              style={{ color: "red !important" }}
-            >
-              Must be valid Email and password should be min 8 characters long
-            </Form.Text>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Login
-          </Button>
-        </Form>
-        
-        <div style={{ margin: "20px 0" }}>
-          <hr style={{ backgroundColor: "#ccc" }} />
-          <p style={{ textAlign: "center", color: "#666" }}>Or continue with</p>
-        </div>
-        
-        <div style={{ maxWidth: "300px", margin: "0 auto" }}>
-          <GoogleSSOButton />
-          <MicrosoftSSOButton />
-          <GenericSSOButton />
+            {authFailed && (
+              <p className="text-red-400 text-sm mt-2">
+                Email or password is wrong
+              </p>
+            )}
+            {validationError && (
+              <p className="text-red-400 text-sm mt-2">
+                Must be valid Email and password should be min 8 characters long
+              </p>
+            )}
+          </div>
           
-          {ssoError && (
-            <div style={{ 
-              color: "red", 
-              textAlign: "center", 
-              marginTop: "10px",
-              fontSize: "14px"
-            }}>
-              SSO Error: {ssoError}
-            </div>
-          )}
-        </div>
+          <button type="submit" className="btn-primary-glass w-full">
+            Login
+          </button>
+        </form>
       </div>
     );
 }

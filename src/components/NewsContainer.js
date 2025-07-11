@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Spinner, Card, Container, Row, Col, Badge } from "react-bootstrap";
 import CustomProgressBar from "./card/progress";
 
 export function NewsComponent(props) {
@@ -312,95 +311,103 @@ export function NewsComponent(props) {
   }, []);
 
   return (
-    <div className="news-page">
-      <Container className="mt-0">
-        <Row>
-          <Col>
-            <h2 className="mb-4 text-center">Latest Tech News</h2>
-            <p className="text-center mb-4" style={{ color: 'white' }}>
-              Live updates from InfoQ and TechCrunch - Software Engineering, Startups & Tech Trends
-            </p>
-          
+    <div className="min-h-screen bg-bg-primary text-text-primary p-0 m-0">
+      <div className="max-w-6xl mx-auto pt-8 px-4">
+        <div className="w-full">
+          <h2 className="text-4xl font-bold text-center mb-4 text-text-primary">Latest Tech News</h2>
+          <p className="text-center mb-8 text-text-secondary">
+            Live updates from InfoQ and TechCrunch - Software Engineering, Startups & Tech Trends
+          </p>
+        
           {loading ? (
             <div className="text-center">
-              <Spinner animation="border" role="status" className="mb-3">
-                <span className="sr-only">Loading...</span>
-              </Spinner>
-              <p>Scraping latest news from InfoQ and TechCrunch...</p>
-              <div className="progress mb-3" style={{ height: '10px' }}>
+              <div className="spinner-glass w-12 h-12 mx-auto mb-6"></div>
+              <p className="text-text-secondary">Scraping latest news from InfoQ and TechCrunch...</p>
+              <div className="w-full max-w-md mx-auto mb-6 h-2.5 bg-surface-glass rounded-full overflow-hidden">
                 <CustomProgressBar />
               </div>
             </div>
           ) : error && news.length === 0 ? (
             <div className="text-center">
-              <div className="alert alert-warning">
-                <h5>Unable to fetch news</h5>
-                <p>
+              <div className="alert-glass border-yellow-500 bg-yellow-500/10 max-w-2xl mx-auto">
+                <h5 className="text-xl font-semibold mb-3 text-text-primary">Unable to fetch news</h5>
+                <p className="text-text-secondary mb-3">
                   Could not scrape articles from InfoQ and TechCrunch at this time. 
                   This may be due to CORS restrictions or site structure changes.
                 </p>
-                <small className="text-muted">
+                <small className="text-text-muted">
                   Please try refreshing the page or check back later.
                 </small>
               </div>
             </div>
           ) : (
-            <Row>
+            <div className="space-y-6">
               {news.map((article, index) => (
-                <Col md={12} key={index} className="mb-4">
-                  <Card className="h-100 shadow-sm border-0">
-                    <Card.Body>
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <div>
-                          <Badge 
-                            variant={article.source === 'InfoQ' ? 'info' : 'success'} 
-                            className="mr-2"
+                <div key={index} className="w-full">
+                  <div className="card-glass h-full">
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center space-x-3">
+                          <span 
+                            className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                              article.source === 'InfoQ' 
+                                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
+                                : 'bg-green-500/20 text-green-400 border border-green-500/30'
+                            }`}
                           >
                             {article.source}
-                          </Badge>
-                          <small className="text-muted">
+                          </span>
+                          <span className="text-text-muted text-sm">
                             {article.author} • {new Date(article.published).toLocaleDateString()}
-                          </small>
+                          </span>
                         </div>
                       </div>
-                      <Card.Title className="h5 mb-3" style={{ textAlign: 'left' }}>
+                      <h3 className="text-xl font-semibold mb-4 text-left">
                         <a 
                           href={article.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-decoration-none"
-                          style={{ color: 'white' }}
+                          className="text-text-primary hover:text-accent-primary transition-colors duration-300 no-underline"
                         >
                           {article.title}
                         </a>
-                      </Card.Title>
+                      </h3>
                       {article.description && article.description.length > 20 && (
-                        <Card.Text style={{ textAlign: 'left', color: '#666', fontSize: '0.9rem', lineHeight: '1.4' }}>
+                        <p className="text-left text-text-secondary text-sm leading-relaxed">
                           {article.description}
-                        </Card.Text>
+                        </p>
                       )}
-                    </Card.Body>
-                  </Card>
-                </Col>
+                    </div>
+                  </div>
+                </div>
               ))}
-            </Row>
+            </div>
           )}
           
-            <div className="text-center mt-4">
-              <small style={{ color: '#ccc' }}>
-                News automatically scraped from{' '}
-                <a href="https://www.infoq.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#4fc3f7' }}>
-                  InfoQ
-                </a>{' '}
-                and{' '}
-                <a href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#4fc3f7' }}>
-                  TechCrunch
-                </a>
-              </small>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+          <div className="text-center mt-12">
+            <small className="text-text-muted">
+              News automatically scraped from{' '}
+              <a 
+                href="https://www.infoq.com/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-accent-primary hover:text-accent-secondary transition-colors duration-300"
+              >
+                InfoQ
+              </a>{' '}
+              and{' '}
+              <a 
+                href="https://techcrunch.com/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-accent-primary hover:text-accent-secondary transition-colors duration-300"
+              >
+                TechCrunch
+              </a>
+            </small>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

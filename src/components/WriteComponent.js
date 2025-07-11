@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Form, Button, Spinner } from "react-bootstrap";
 import { useFormik } from "formik";
 import { URL } from "../config";
 import reactGa from "react-ga";
@@ -46,21 +45,22 @@ export function WriteComponent(props) {
   return (
     <div className="warehouse-main">
       <div className="text-form">
-        <h2>Rewrite</h2>
-        <Form className="data-form" onSubmit={formik.handleSubmit}>
-          <Form.Group controlId="formBasicName">
-            <Form.Control
+        <h2 className="text-2xl font-bold text-white mb-6">Rewrite</h2>
+        <form className="data-form" onSubmit={formik.handleSubmit}>
+          <div className="mb-6">
+            <input
               type="text"
               name="data"
+              className="input-glass w-full"
               placeholder="Enter data"
               onChange={formik.handleChange}
               value={formik.values.data}
             />
-          </Form.Group>
-          <Button variant="primary" type="submit">
+          </div>
+          <button type="submit" className="btn-primary-glass">
             Submit Data
-          </Button>
-        </Form>
+          </button>
+        </form>
       </div>
       <br />
       <div
@@ -69,13 +69,11 @@ export function WriteComponent(props) {
       >
         {loading && (
           <div>
-            <Spinner animation="border" role="status">
-              <span className="sr-only">Loading...</span>
-            </Spinner>
-            <p>(This typically requires around 2 seconds.)</p>
+            <div className="spinner-glass w-8 h-8 mx-auto mb-4"></div>
+            <p className="text-text-secondary">(This typically requires around 2 seconds.)</p>
           </div>
         )}
-        <p>{testData}</p>
+        <p className="text-white">{testData}</p>
       </div>
     </div>
   );
