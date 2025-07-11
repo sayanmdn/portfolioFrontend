@@ -1,6 +1,6 @@
 import "./tailwind.css";
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Navigationbar } from "./components/Navigationbar";
 import { Login } from "./components/Login";
 import { Area1 } from "./components/Area1";
@@ -19,6 +19,8 @@ import store from "./redux/store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     reactGa.initialize("UA-92548969-2");
     reactGa.pageview("/");
@@ -27,9 +29,18 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Navigationbar />
+        <Navigationbar 
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
         <Switch>
-          <div className="main-class">
+          <div 
+            className="main-class transition-all duration-300 ease-in-out"
+            style={{
+              marginTop: isMobileMenuOpen ? '360px' : '80px',
+              transition: 'margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+          >
             <Route exact path="/">
               <Area1 />
             </Route>
