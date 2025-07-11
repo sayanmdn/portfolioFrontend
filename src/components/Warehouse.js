@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { useFormik } from "formik";
 import { URL } from "../config";
@@ -32,12 +32,6 @@ export function Warehouse(props) {
       });
   };
   const auth = useSelector((state) => state.auth);
-  if (auth.isLoggedIn) {
-    var userId = auth.user.id;
-  }
-
-  var [saveSuccess, setSaveSuccess] = useState(false);
-  const [savedData, setSavedData] = useState(testData);
   const formik = useFormik({
     initialValues: {
       data: "",

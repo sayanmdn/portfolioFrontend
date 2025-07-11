@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Typewriter } from "react-typewriting-effect";
 import "react-typewriting-effect/dist/index.css";
 import gitLogo from "./../assets/github.svg";

@@ -7,12 +7,6 @@ export function NewsComponent(props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const extractTextFromHTML = (html) => {
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    return div.textContent || div.innerText || '';
-  };
-
   const scrapeInfoQ = async () => {
     try {
       const proxyUrl = 'https://api.allorigins.win/raw?url=';
