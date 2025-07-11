@@ -2492,11 +2492,6 @@
     "@webassemblyjs/ast" "1.14.1"
     "@xtuc/long" "4.2.2"
 
-"@workos-inc/authkit-js@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.npmjs.org/@workos-inc/authkit-js/-/authkit-js-0.5.1.tgz"
-  integrity sha512-BOYrBiiINPmbkep+YGTsaJ8PiC8qtVCzZ3uN383TR9dRB/l77hEdO02EezQS5QWgMm02x503hLKdmacwWOwsMg==
-
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@xtuc/ieee754/-/ieee754-1.2.0.tgz"

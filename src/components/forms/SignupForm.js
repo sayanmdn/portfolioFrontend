@@ -54,7 +54,7 @@ export function SignupForm(props) {
             axios.post(`${URL}user/otpsend`, {email})
             .then(res=>{
                 console.log("Email Sent response 1 "+JSON.stringify(res))
-                if(res.data.code == "otpSent"){
+                if(res.data.code === "otpSent"){
                     console.log("Email Sent response 2 "+res)
                     setOtpSentSuccessfully(true)
                     alert("OTP Sent Successfully to your Email")

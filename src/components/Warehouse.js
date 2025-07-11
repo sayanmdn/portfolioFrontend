@@ -32,7 +32,7 @@ export function Warehouse(props) {
         console.log("error returned at fetchData: " + err);
       });
   };
-  const auth = useSelector((state) => state.auth);
+  useSelector((state) => state.auth);
   const formik = useFormik({
     initialValues: {
       data: "",

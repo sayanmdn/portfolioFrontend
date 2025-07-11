@@ -12,7 +12,7 @@ export function Loginform(props) {
   var [validationError, setValidationError] = useState(null);
   let history = useHistory();
   let dispatch = useDispatch();
-  const { ssoError } = useSelector(state => state.auth);
+  useSelector(state => state.auth);
 
   const formik = useFormik({
     initialValues: {

@@ -160,7 +160,7 @@ export function InstagramImageFetcher() {
                   <div className="p-6 text-center">
                     <img
                       src={imageUrl}
-                      alt={`Instagram post image ${index + 1}`}
+                      alt={`Post ${index + 1}`}
                       className="max-w-full h-auto max-h-96 rounded-lg"
                       onError={() => setError(`Failed to load image ${index + 1}`)}
                     />
