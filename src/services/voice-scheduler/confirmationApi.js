@@ -15,8 +15,8 @@ apiClient.interceptors.request.use((config) => {
   console.log('Token from localStorage:', token);
   
   if (token && token !== 'null' && token !== null) {
-    config.headers['auth-token'] = token;
-    console.log('Added auth-token header:', token);
+    config.headers['Authorization'] = `Bearer ${token}`;
+    console.log('Added Authorization header:', token);
   } else {
     console.warn('No valid token found in localStorage');
   }
@@ -53,7 +53,7 @@ export const getPendingEvents = async (userId) => {
     };
     
     if (token) {
-      headers['auth-token'] = token;
+      headers['Authorization'] = `Bearer ${token}`;
     }
     
     console.log('Request headers:', headers);
@@ -73,7 +73,7 @@ export const updatePendingEvent = async (eventId, updates) => {
   try {
     const token = getAuthToken();
     const headers = { 'Content-Type': 'application/json' };
-    if (token) headers['auth-token'] = token;
+    if (token) headers['Authorization'] = `Bearer ${token}`;
     
     const response = await apiClient.put(`api/confirmation/update/${eventId}`, updates, { headers });
     return response.data;
@@ -87,7 +87,7 @@ export const approveEvent = async (eventId) => {
   try {
     const token = getAuthToken();
     const headers = { 'Content-Type': 'application/json' };
-    if (token) headers['auth-token'] = token;
+    if (token) headers['Authorization'] = `Bearer ${token}`;
     
     const response = await apiClient.post(`api/confirmation/approve/${eventId}`, {}, { headers });
     return response.data;
@@ -101,7 +101,7 @@ export const rejectEvent = async (eventId) => {
   try {
     const token = getAuthToken();
     const headers = { 'Content-Type': 'application/json' };
-    if (token) headers['auth-token'] = token;
+    if (token) headers['Authorization'] = `Bearer ${token}`;
     
     const response = await apiClient.post(`api/confirmation/reject/${eventId}`, {}, { headers });
     return response.data;
