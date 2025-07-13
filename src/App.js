@@ -1,11 +1,13 @@
 import "./tailwind.css";
 import "./App.css";
+import "./styles/voice-scheduler/voice-scheduler.css";
 import { useEffect, useState, Suspense, lazy } from "react";
 import { Navigationbar } from "./components/Navigationbar";
 import reactGa from "react-ga";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { UserProvider } from "./context/UserContext";
 
 // Lazy load components for better performance
 const Login = lazy(() => import("./components/Login").then(m => ({ default: m.Login })));
@@ -17,6 +19,7 @@ const WriteComponent = lazy(() => import("./components/WriteComponent").then(m =
 const SocksSuggestions = lazy(() => import("./components/StockSuggestionsComponent").then(m => ({ default: m.SocksSuggestions })));
 const InstagramImageFetcher = lazy(() => import("./components/InstagramImageFetcher").then(m => ({ default: m.InstagramImageFetcher })));
 const SSOCallback = lazy(() => import("./components/SSOCallback").then(m => ({ default: m.SSOCallback })));
+const SearchEventsPage = lazy(() => import("./pages/voice-scheduler/SearchEventsPage").then(m => ({ default: m.SearchEventsPage })));
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,12 +31,13 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Router>
-        <Navigationbar 
-          isMobileMenuOpen={isMobileMenuOpen}
-          setIsMobileMenuOpen={setIsMobileMenuOpen}
-        />
-        <Switch>
+      <UserProvider>
+        <Router>
+          <Navigationbar 
+            isMobileMenuOpen={isMobileMenuOpen}
+            setIsMobileMenuOpen={setIsMobileMenuOpen}
+          />
+          <Switch>
           <div 
             className="main-class transition-all duration-300 ease-in-out"
             style={{
@@ -69,10 +73,14 @@ function App() {
               <Route exact path="/callback">
                 <SSOCallback />
               </Route>
+              <Route exact path="/events">
+                <SearchEventsPage />
+              </Route>
             </Suspense>
           </div>
         </Switch>
       </Router>
+      </UserProvider>
     </Provider>
   );
 }

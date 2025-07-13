@@ -178,6 +178,18 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             >
               Warehouse
             </Link>
+            <Link
+              to="/events"
+              className="transition-colors duration-300 font-medium"
+              style={{ 
+                color: 'rgba(255, 255, 255, 0.8)', 
+                textDecoration: 'none' 
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+            >
+              Events
+            </Link>
             <button
               onClick={handleLogout}
               className="transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer"
@@ -344,6 +356,19 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
                 >
                   Warehouse
+                </Link>
+                <Link
+                  to="/events"
+                  onClick={closeMobileMenu}
+                  className="transition-colors duration-300 font-medium py-2"
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.8)', 
+                    textDecoration: 'none' 
+                  }}
+                  onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                >
+                  Events
                 </Link>
                 <button
                   onClick={() => {
