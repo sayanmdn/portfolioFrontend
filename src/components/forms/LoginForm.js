@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { initAuth } from "../../redux/actions";
 import { URL } from "../../config";
@@ -12,7 +12,7 @@ export function Loginform(props) {
   var [validationError, setValidationError] = useState(null);
   var [errorMessage, setErrorMessage] = useState(null);
   var [isLoading, setIsLoading] = useState(false);
-  let history = useHistory();
+  let navigate = useNavigate();
   let dispatch = useDispatch();
   useSelector(state => state.auth);
 
@@ -37,7 +37,7 @@ export function Loginform(props) {
             localStorage.setItem("token", res.data.token);
             setLoginSuccess(true);
             dispatch(initAuth(res.data.user));
-            history.push("/warehouse");
+            navigate("/warehouse");
           }
         })
         .catch((error) => {

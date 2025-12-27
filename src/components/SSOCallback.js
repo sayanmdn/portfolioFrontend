@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import workosService from '../services/workos';
 import { initAuth } from '../redux/actions';
@@ -7,14 +7,14 @@ import { initAuth } from '../redux/actions';
 export function SSOCallback() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const handleCallback = async () => {
       try {
         const user = await workosService.getUser();
-        
+
         if (user) {
           localStorage.setItem('token', user.id);
           dispatch(initAuth({
@@ -24,19 +24,19 @@ export function SSOCallback() {
             firstName: user.firstName,
             lastName: user.lastName
           }));
-          
-          history.push('/warehouse');
+
+          navigate('/warehouse');
         } else {
           setError('Authentication failed. Please try again.');
           setTimeout(() => {
-            history.push('/login');
+            navigate('/login');
           }, 3000);
         }
       } catch (err) {
         console.error('SSO Callback Error:', err);
         setError('Authentication failed. Please try again.');
         setTimeout(() => {
-          history.push('/login');
+          navigate('/login');
         }, 3000);
       } finally {
         setLoading(false);
@@ -44,7 +44,7 @@ export function SSOCallback() {
     };
 
     handleCallback();
-  }, [history, dispatch]);
+  }, [navigate, dispatch]);
 
   if (loading) {
     return (

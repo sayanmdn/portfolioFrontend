@@ -6,7 +6,7 @@ import { Navigationbar } from "./components/Navigationbar";
 import reactGa from "react-ga";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 
 // Lazy load components for better performance
@@ -33,12 +33,12 @@ function App() {
     <Provider store={store}>
       <UserProvider>
         <Router>
-          <Navigationbar 
+          <Navigationbar
             isMobileMenuOpen={isMobileMenuOpen}
             setIsMobileMenuOpen={setIsMobileMenuOpen}
           />
-          <Switch>
-          <div 
+
+          <div
             className="main-class transition-all duration-300 ease-in-out"
             style={{
               marginTop: isMobileMenuOpen ? '360px' : '80px',
@@ -46,42 +46,24 @@ function App() {
             }}
           >
             <Suspense fallback={<div className="flex justify-center items-center min-h-screen"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div></div>}>
-              <Route exact path="/">
-                <Area1 />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-              <Route exact path="/warehouse">
-                <Warehouse />
-              </Route>
-              <Route exact path="/news">
-                <NewsComponent />
-              </Route>
-              <Route exact path="/write">
-                <WriteComponent />
-              </Route>
-              <Route exact path="/stocks">
-                <SocksSuggestions />
-              </Route>
-              <Route exact path="/instagram">
-                <InstagramImageFetcher />
-              </Route>
-              <Route exact path="/callback">
-                <SSOCallback />
-              </Route>
-              <Route exact path="/events">
-                <SearchEventsPage />
-              </Route>
+              <Routes>
+                <Route path="/" element={<Area1 />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/warehouse" element={<Warehouse />} />
+                <Route path="/news" element={<NewsComponent />} />
+                <Route path="/write" element={<WriteComponent />} />
+                <Route path="/stocks" element={<SocksSuggestions />} />
+                <Route path="/instagram" element={<InstagramImageFetcher />} />
+                <Route path="/callback" element={<SSOCallback />} />
+                <Route path="/events" element={<SearchEventsPage />} />
+              </Routes>
             </Suspense>
           </div>
-        </Switch>
-      </Router>
+
+        </Router>
       </UserProvider>
-    </Provider>
+    </Provider >
   );
 }
 

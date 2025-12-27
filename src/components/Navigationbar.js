@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { delAuth, initAuth } from "../redux/actions";
 import axios from "axios";
 import { URL } from "../config";
 
 export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,7 +34,7 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
   const handleLogout = () => {
     localStorage.setItem("token", null);
     dispatch(delAuth());
-    history.push("/login");
+    navigate("/login");
   };
 
   const toggleMobileMenu = () => {
@@ -46,7 +46,7 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
   };
 
   return (
-    <nav 
+    <nav
       className="w-full flex items-center justify-between px-4 py-4 md:px-12 lg:px-24 fixed top-0 left-0 right-0"
       style={{
         background: 'rgba(255, 255, 255, 0.05)',
@@ -63,9 +63,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
         <Link
           to="/"
           className="text-lg sm:text-xl md:text-2xl font-bold transition-colors duration-300"
-          style={{ 
-            color: '#6366f1', 
-            textDecoration: 'none' 
+          style={{
+            color: '#6366f1',
+            textDecoration: 'none'
           }}
           onMouseEnter={(e) => e.target.style.color = '#8b5cf6'}
           onMouseLeave={(e) => e.target.style.color = '#6366f1'}
@@ -79,9 +79,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
         <Link
           to="/"
           className="transition-colors duration-300 font-medium"
-          style={{ 
-            color: 'rgba(255, 255, 255, 0.8)', 
-            textDecoration: 'none' 
+          style={{
+            color: 'rgba(255, 255, 255, 0.8)',
+            textDecoration: 'none'
           }}
           onMouseEnter={(e) => e.target.style.color = '#ffffff'}
           onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -91,9 +91,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
         <Link
           to="/news"
           className="transition-colors duration-300 font-medium"
-          style={{ 
-            color: 'rgba(255, 255, 255, 0.8)', 
-            textDecoration: 'none' 
+          style={{
+            color: 'rgba(255, 255, 255, 0.8)',
+            textDecoration: 'none'
           }}
           onMouseEnter={(e) => e.target.style.color = '#ffffff'}
           onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -103,9 +103,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
         <Link
           to="/stocks"
           className="transition-colors duration-300 font-medium"
-          style={{ 
-            color: 'rgba(255, 255, 255, 0.8)', 
-            textDecoration: 'none' 
+          style={{
+            color: 'rgba(255, 255, 255, 0.8)',
+            textDecoration: 'none'
           }}
           onMouseEnter={(e) => e.target.style.color = '#ffffff'}
           onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -117,9 +117,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <Link
               to="/signup"
               className="transition-colors duration-300 font-medium"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -129,9 +129,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <Link
               to="/login"
               className="transition-colors duration-300 font-medium"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -145,9 +145,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <Link
               to="/write"
               className="transition-colors duration-300 font-medium"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -157,9 +157,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <Link
               to="/instagram"
               className="transition-colors duration-300 font-medium"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -169,9 +169,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <Link
               to="/warehouse"
               className="transition-colors duration-300 font-medium"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -181,9 +181,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <Link
               to="/events"
               className="transition-colors duration-300 font-medium"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -193,7 +193,7 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
             <button
               onClick={handleLogout}
               className="transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer"
-              style={{ 
+              style={{
                 color: 'rgba(255, 255, 255, 0.8)'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
@@ -251,9 +251,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
               to="/"
               onClick={closeMobileMenu}
               className="transition-colors duration-300 font-medium py-2"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -264,9 +264,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
               to="/news"
               onClick={closeMobileMenu}
               className="transition-colors duration-300 font-medium py-2"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -277,9 +277,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
               to="/stocks"
               onClick={closeMobileMenu}
               className="transition-colors duration-300 font-medium py-2"
-              style={{ 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                textDecoration: 'none' 
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                textDecoration: 'none'
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -292,9 +292,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   to="/signup"
                   onClick={closeMobileMenu}
                   className="transition-colors duration-300 font-medium py-2"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    textDecoration: 'none' 
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -305,9 +305,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   to="/login"
                   onClick={closeMobileMenu}
                   className="transition-colors duration-300 font-medium py-2"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    textDecoration: 'none' 
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -322,9 +322,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   to="/write"
                   onClick={closeMobileMenu}
                   className="transition-colors duration-300 font-medium py-2"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    textDecoration: 'none' 
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -335,9 +335,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   to="/instagram"
                   onClick={closeMobileMenu}
                   className="transition-colors duration-300 font-medium py-2"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    textDecoration: 'none' 
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -348,9 +348,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   to="/warehouse"
                   onClick={closeMobileMenu}
                   className="transition-colors duration-300 font-medium py-2"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    textDecoration: 'none' 
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -361,9 +361,9 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                   to="/events"
                   onClick={closeMobileMenu}
                   className="transition-colors duration-300 font-medium py-2"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    textDecoration: 'none' 
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
                   onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
@@ -376,7 +376,7 @@ export function Navigationbar({ isMobileMenuOpen, setIsMobileMenuOpen }) {
                     closeMobileMenu();
                   }}
                   className="transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer text-left py-2"
-                  style={{ 
+                  style={{
                     color: 'rgba(255, 255, 255, 0.8)'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#ffffff'}
