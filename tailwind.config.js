@@ -3,69 +3,41 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Glassmorphism 2.0 Dark Mode Variables
-        'bg-primary': '#0a0a0f',
-        'bg-secondary': '#151520',
-        'bg-tertiary': '#1a1a2e',
-        'surface-glass': 'rgba(255, 255, 255, 0.05)',
-        'surface-glass-hover': 'rgba(255, 255, 255, 0.08)',
-        'surface-glass-active': 'rgba(255, 255, 255, 0.12)',
-        'text-primary': '#ffffff',
-        'text-secondary': 'rgba(255, 255, 255, 0.8)',
-        'text-muted': 'rgba(255, 255, 255, 0.6)',
-        'accent-primary': '#6366f1',
-        'accent-secondary': '#8b5cf6',
-        'border-glass': 'rgba(255, 255, 255, 0.1)',
-        'border-glass-strong': 'rgba(255, 255, 255, 0.2)',
-      },
-      backgroundImage: {
-        'accent-gradient': 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-        'glass-bg': `
-          radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)
-        `,
-      },
-      backdropBlur: {
-        'glass': '16px',
-        'glass-strong': '24px',
-      },
-      boxShadow: {
-        'glass': '0 8px 32px rgba(0, 0, 0, 0.3)',
-        'glass-strong': '0 20px 60px rgba(0, 0, 0, 0.4)',
-      },
-      borderRadius: {
-        'glass': '16px',
-        'glass-strong': '20px',
+        navy: {
+          900: '#020c1b',
+          800: '#0a192f',
+          700: '#112240',
+          600: '#233554',
+        },
+        slate: {
+          light: '#a8b2d1',
+          lightest: '#ccd6f6',
+          white: '#e6f1ff',
+        },
+        teal: {
+          300: '#64ffda',
+          400: '#14b8a6', // Fallback for accents
+          tint: 'rgba(100, 255, 218, 0.1)',
+        }
       },
       fontFamily: {
-        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'],
+        sans: ['Inter', 'Calibre', 'San Francisco', 'SF Pro Text', '-apple-system', 'system-ui', 'sans-serif'],
+        mono: ['Fira Code', 'Fira Mono', 'SF Mono', 'Roboto Mono', 'monospace'],
       },
       animation: {
-        'fade-in-up': 'fadeInUp 2s ease-out forwards',
-        'pulse-slow': 'pulse 2s infinite',
+        'fade-up': 'fadeUp 1s ease-in-out forwards',
       },
       keyframes: {
-        fadeInUp: {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(30px)',
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)',
-          },
-        },
-      },
+        fadeUp: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        }
+      }
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 }

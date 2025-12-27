@@ -27,6 +27,18 @@ function App() {
   useEffect(() => {
     reactGa.initialize("UA-92548969-2");
     reactGa.pageview("/");
+
+    // Spotlight cursor effect
+    const handleMouseMove = (e) => {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
@@ -45,7 +57,7 @@ function App() {
               transition: 'margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
           >
-            <Suspense fallback={<div className="flex justify-center items-center min-h-screen"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div></div>}>
+            <Suspense fallback={<div className="flex justify-center items-center min-h-screen text-teal-300 font-mono">Loading...</div>}>
               <Routes>
                 <Route path="/" element={<Area1 />} />
                 <Route path="/login" element={<Login />} />
