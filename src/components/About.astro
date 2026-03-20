@@ -1,0 +1,55 @@
+---
+const skills = [
+  'JavaScript (ES6+)',
+  'TypeScript',
+  'React',
+  'Java Spring Boot',
+  'Node.js',
+  'AWS',
+];
+---
+
+<section id="about" class="py-24 fade-in-section">
+  <h2 class="numbered-heading">About Me</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="text-base space-y-4" style="color: var(--slate);">
+      <p>
+        Hello! My name is Sayantan and I enjoy creating things that live on the internet.
+        My interest in web development started back in 2020 when I decided to try building
+        a custom theme — turns out hacking together buttons and HTML &amp; CSS taught me a lot!
+      </p>
+      <p>
+        Fast-forward to today, and I've had the privilege of working at
+        <span style="color: var(--green);">an innovative startup</span> and
+        <span style="color: var(--green);">a large corporation</span>. My main focus these days
+        is building accessible, inclusive products and digital experiences.
+      </p>
+      <p>Here are a few technologies I've been working with recently:</p>
+      <ul class="grid grid-cols-2 gap-2 mt-4 font-mono text-sm max-w-[400px]">
+        {skills.map(skill => (
+          <li class="flex items-center" style="color: var(--light-slate);">
+            <span style="color: var(--green); margin-right: 8px;">▹</span>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Profile image placeholder -->
+    <div class="flex justify-center md:justify-start">
+      <div class="relative w-[300px] h-[300px] group">
+        <div
+          class="absolute inset-0 rounded-lg transition-all duration-300 group-hover:translate-x-3 group-hover:translate-y-3"
+          style="border: 2px solid var(--green); transform: translate(20px, 20px);"
+        ></div>
+        <div
+          class="absolute inset-0 rounded-lg z-10 transition-all duration-300 group-hover:bg-transparent"
+          style="background: rgba(100, 255, 218, 0.1);"
+        ></div>
+        <div class="w-full h-full rounded-lg overflow-hidden relative z-0 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300">
+          <div class="w-full h-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-80"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
