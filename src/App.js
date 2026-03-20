@@ -3,7 +3,7 @@ import "./App.css";
 import "./styles/voice-scheduler/voice-scheduler.css";
 import { useEffect, useState, Suspense, lazy } from "react";
 import { Navigationbar } from "./components/Navigationbar";
-import reactGa from "react-ga";
+import ReactGA from "react-ga4";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -25,8 +25,8 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    reactGa.initialize("UA-92548969-2");
-    reactGa.pageview("/");
+    ReactGA.initialize("UA-92548969-2");
+    ReactGA.send({ hitType: "pageview", page: "/" });
 
     // Spotlight cursor effect
     const handleMouseMove = (e) => {

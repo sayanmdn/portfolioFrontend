@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useFormik } from "formik";
 import { URL } from "../config";
-import reactGa from "react-ga";
+import ReactGA from "react-ga4";
 
 export function Warehouse(props) {
   const [testData, setTestData] = useState([]);
@@ -13,8 +13,8 @@ export function Warehouse(props) {
   useEffect(() => {
     const authToken = localStorage.getItem("token");
     setStateToken(authToken);
-    reactGa.initialize("UA-92548969-2");
-    reactGa.pageview("/warehouse");
+    ReactGA.initialize("UA-92548969-2");
+    ReactGA.send({ hitType: "pageview", page: "/warehouse" });
   }, []);
 
   const fetchData = () => {

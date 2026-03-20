@@ -11,14 +11,12 @@
     "formik": "^2.4.9",
     "prop-types": "^15.8.1",
     "react": "^19.2.3",
-    "react-axios": "^2.0.6",
-    "react-dom": "^19.2.3",
-    "react-ga": "^3.3.1",
+"react-dom": "^19.2.3",
+    "react-ga4": "^2.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.11.0",
     "react-scripts": "5.0.1",
-    "react-typewriting-effect": "^1.0.4",
-    "redux": "^5.0.1",
+"redux": "^5.0.1",
     "web-vitals": "^5.1.0"
   },
   "scripts": {

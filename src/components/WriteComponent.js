@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import { URL } from "../config";
-import reactGa from "react-ga";
+import ReactGA from "react-ga4";
 
 export function WriteComponent(props) {
   const [testData, setTestData] = useState([]);
@@ -12,8 +12,8 @@ export function WriteComponent(props) {
   useEffect(() => {
     const authToken = localStorage.getItem("token");
     setStateToken(authToken);
-    reactGa.initialize("UA-92548969-2");
-    reactGa.pageview("/write");
+    ReactGA.initialize("UA-92548969-2");
+    ReactGA.send({ hitType: "pageview", page: "/write" });
   }, []);
 
   const formik = useFormik({
