@@ -1,28 +1,19 @@
 ---
 const projects = [
   {
-    title: 'Portfolio Website',
+    title: 'Hotel Management Dashboard',
     description:
-      'A fast, SEO-friendly personal portfolio and blog built with Astro and Tailwind CSS. Designed with a dark minimalist aesthetic and smooth animations.',
-    tech: ['Astro', 'Tailwind CSS', 'TypeScript', 'Markdown'],
+      'A comprehensive hotel and accommodation management platform backed by MongoDB and secured via Google SSO. The booking system acts as a synchronisation hub, processing drag-and-dropped Excel exports from Booking.com, intelligently parsing reservations to add new bookings and update existing ones without duplication. The invoicing system tracks advance payments, flags pending balances in a dedicated queue, and generates downloadable PDF invoices for guests. A unified management interface oversees the complete guest lifecycle: room allocations, guest counts, commissions, check-in/out statuses, and automated WhatsApp notifications.',
+    tech: ['MongoDB', 'Google SSO', 'Node.js', 'Excel Parsing', 'PDF Generation', 'WhatsApp API'],
     github: 'https://github.com/sayanmdn',
-    emoji: '🚀',
+    live: 'https://bookings-livid.vercel.app/',
     align: 'right',
-  },
-  {
-    title: 'Backend API Platform',
-    description:
-      'A scalable REST API platform for tracking and logging application events in real-time, deployed on AWS Lambda with RDS PostgreSQL.',
-    tech: ['Spring Boot', 'PostgreSQL', 'Docker', 'AWS RDS'],
-    github: 'https://github.com/sayanmdn',
-    emoji: '🗄️',
-    align: 'left',
   },
 ];
 ---
 
 <section id="work" class="py-24 fade-in-section">
-  <h2 class="numbered-heading">Some Things I've Built</h2>
+  <h2 class="numbered-heading">Something I've Built</h2>
 
   {projects.map((project) => (
     <div class="mb-24 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
@@ -30,13 +21,15 @@ const projects = [
       <div
         class={`md:col-span-7 rounded shadow-xl overflow-hidden relative group h-[260px] md:h-[340px] ${project.align === 'right' ? 'order-2 md:order-1' : 'order-2'}`}
       >
+        <img
+          src="/hotel-dashboard.png"
+          alt="Hotel Management Dashboard screenshot"
+          class="w-full h-full object-cover object-top"
+        />
         <div
-          class="w-full h-full absolute inset-0 z-10 transition-colors group-hover:bg-transparent"
-          style="background: rgba(100, 255, 218, 0.07);"
+          class="w-full h-full absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-0"
+          style="background: rgba(10, 25, 47, 0.5);"
         ></div>
-        <div class="w-full h-full bg-gradient-to-tr from-slate-800 to-slate-900 flex items-center justify-center">
-          <span class="text-7xl">{project.emoji}</span>
-        </div>
       </div>
 
       <!-- Text panel -->
@@ -52,12 +45,12 @@ const projects = [
           {project.description}
         </div>
         <ul
-          class={`flex flex-wrap gap-4 font-mono text-xs mb-6 ${project.align === 'right' ? 'justify-start md:justify-end' : 'justify-start'}`}
+          class="flex flex-wrap gap-4 font-mono text-xs mb-6 justify-start md:justify-end"
           style="color: var(--light-slate);"
         >
           {project.tech.map(t => <li>{t}</li>)}
         </ul>
-        <div class={`flex gap-4 ${project.align === 'right' ? 'justify-start md:justify-end' : 'justify-start'}`}>
+        <div class="flex gap-4 justify-start md:justify-end">
           <a
             href={project.github}
             target="_blank"
@@ -68,6 +61,20 @@ const projects = [
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/>
+            </svg>
+          </a>
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="transition-colors"
+            style="color: var(--light-slate);"
+            aria-label="Live site"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
             </svg>
           </a>
         </div>

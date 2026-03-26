@@ -1,0 +1,91 @@
+---
+const jobs = [
+  {
+    company: 'Recrosoft Private Limited',
+    title: 'Senior Software Engineer — Backend & AI',
+    range: 'April 2025 – Present',
+    url: 'https://www.linkedin.com/company/recrosoft/',
+    bullets: [
+      'Led technical design and architecture for a RAG-based AI assistant that helps customer service agents retrieve contextually relevant information in real time.',
+      'Built an auto-escalation engine that analyses conversation state and message sentiment to trigger escalations, reducing manual triage effort significantly.',
+      'Optimised PostgreSQL performance through targeted query rewriting and indexing strategies; led Prisma ORM and PostgreSQL version upgrades with zero downtime.',
+      'Implemented data archival and indexing pipelines to reduce storage costs while keeping query performance fast.',
+      'Integrated third-party calendar and notification services, and delivered high-stakes external API integrations end-to-end.',
+      'Mentored junior engineers on backend best practices, code quality, and cloud deployment patterns on GCP.',
+    ],
+  },
+  {
+    company: 'Onmobile Global Ltd.',
+    title: 'Software Engineer — Backend',
+    range: 'Nov 2021 – March 2025',
+    url: 'https://www.onmobile.com/',
+    bullets: [
+      'Architected and maintained a microservices-based gaming platform (onmo.com) serving high-traffic SaaS workloads across multiple regions.',
+      'Designed and executed a complex database migration from DynamoDB to MySQL across environments using Knex.js — zero data loss, zero downtime.',
+      'Built a strategic Redis caching layer using Hashes, Sorted Sets, and Lua scripting that reduced direct database load by 60%.',
+      'Implemented Full Text Search in MySQL for user name lookup, cutting overall DB CPU utilisation by 25% and eliminating query spikes.',
+      'Built an in-house event processing system (Kafka-equivalent) on AWS SQS + Lambda + MongoDB for background synchronous and asynchronous event handling.',
+      'Deployed worker infrastructure for scheduled caching and migrations using ECS and EventBridge, managed with Terraform and Terragrunt.',
+      'Integrated an ETL pipeline with Apache Airflow and dbt; led code reviews and established engineering best practices across the team.',
+    ],
+  },
+  {
+    company: 'Mantra Labs Pvt. Ltd.',
+    title: 'Trainee Software Engineer — Full Stack',
+    range: 'Sept 2020 – Nov 2021',
+    url: 'https://www.mantralabsglobal.com/',
+    bullets: [
+      'Developed and maintained a production chatbot platform for a major health insurance company using Java Spring Boot microservices and Node.js.',
+      'Built real-time communication features using socket.io and Redis, improving chatbot responsiveness under concurrent user load.',
+      'Integrated the chatbot with multiple external CMS APIs to surface policy data dynamically to agents and customers.',
+      'Addressed monthly VAPT (Vulnerability Assessment and Penetration Testing) findings, proactively resolving security issues before release.',
+      'Managed and stored large volumes of customer data, enabling agents to run detailed analytics and reach prospective customers.',
+    ],
+  },
+  {
+    company: 'OneDred Pvt. Ltd.',
+    title: 'Software Engineer — Backend',
+    range: 'June 2019 – Dec 2019',
+    url: '#',
+    bullets: [
+      'Built REST APIs for real-time vehicle location tracking using Node.js and Express, with data persisted in MongoDB and deployed on AWS EC2.',
+      'Supported the SEO team by resolving bugs and implementing WordPress themes and plugins, improving overall site performance.',
+    ],
+  },
+];
+---
+
+<section id="experience" class="py-24 fade-in-section">
+  <h2 class="numbered-heading">Where I've Worked</h2>
+
+  <div class="space-y-16 max-w-[700px]">
+    {jobs.map((job) => (
+      <div>
+        <h3 class="text-xl font-semibold" style="color: var(--lightest-slate);">
+          {job.title}
+          <span style="color: var(--green);">
+            &nbsp;@&nbsp;
+            <a
+              href={job.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:underline"
+              style="color: var(--green);"
+            >
+              {job.company}
+            </a>
+          </span>
+        </h3>
+        <p class="font-mono text-sm mt-1 mb-4" style="color: var(--slate);">{job.range}</p>
+        <ul class="space-y-3">
+          {job.bullets.map((bullet) => (
+            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--slate);">
+              <span class="mt-1 shrink-0" style="color: var(--green);">▹</span>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
