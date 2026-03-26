@@ -5,9 +5,25 @@ import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Footer from '../components/Footer.astro';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sayantan Mishra',
+  url: 'https://sayantanmishra.com',
+  image: 'https://sayantanmishra.com/logo.png',
+  jobTitle: 'Senior Software Engineer',
+  description: 'Senior Software Engineer with 6 years building high-traffic backend systems in Node.js, TypeScript, and AWS.',
+  sameAs: [
+    'https://github.com/sayanmdn',
+    'https://www.linkedin.com/in/sayanmdn/',
+  ],
+  knowsAbout: ['Node.js', 'TypeScript', 'AWS', 'Microservices', 'Distributed Systems', 'RAG', 'LLMs'],
+};
 ---
 
 <Layout>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} slot="head" />
   <div class="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24">
     <Hero />
     <About />
